@@ -1,4 +1,3 @@
-import { Button } from "@mui/material";
 import Image from "next/image";
 
 export const TECHSTACK = [
