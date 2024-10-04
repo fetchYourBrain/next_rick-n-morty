@@ -9,8 +9,8 @@ export const NAVIGATION = [
 ];
 export const Header = () => {
   return (
-    <header className=" h-16 items-center flex px-4 md:px-10 sticky top-0">
-      <div className="flex-1">
+    <header className=" bg-white h-16 items-center flex px-4 md:px-10 sticky top-0 mb-8">
+      <Link href='/' className="flex-1">
         <Image
           src={"img/logo.svg"}
           alt="Logo"
@@ -18,7 +18,7 @@ export const Header = () => {
           height={40}
           className="justify-start"
         />
-      </div>
+      </Link>
       <nav className="hidden md:flex mx-auto flex-1 justify-center">
         <ul className="flex items-center gap-4 ">
           {NAVIGATION.map((nav) => (
