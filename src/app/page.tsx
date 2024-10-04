@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-export const TECHSTACK = [
+const TECHSTACK = [
   "NextJS",
   "Redux Toolkit",
   "TailwindCSS",
