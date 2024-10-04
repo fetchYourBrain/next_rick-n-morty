@@ -2,7 +2,7 @@ import { Avatar, IconButton, Tooltip } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
 
-export const NAVIGATION = [
+const NAVIGATION = [
   { name: "Home", href: "/"},
   { name: "Characters", href: "/characters" },
   { name: "Episodes", href: "/episodes" },
