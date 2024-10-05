@@ -9,7 +9,7 @@ export const NAVIGATION = [
 ];
 export const Header = () => {
   return (
-    <header className=" bg-white h-16 items-center flex px-4 md:px-10 sticky top-0 mb-8">
+    <header className=" bg-white h-16 items-center flex px-4 md:px-10 sticky top-0 mb-8 z-50">
       <Link href='/' className="flex-1">
         <Image
           src={"img/logo.svg"}
@@ -36,7 +36,7 @@ export const Header = () => {
             sx={{ ml: 2 }}
             aria-haspopup="true"
           >
-            <Avatar sx={{ width: 32, height: 32 }}>Un</Avatar>
+            <Avatar sx={{ width: 32, height: 32 }}>U</Avatar>
           </IconButton>
         </Tooltip>
         </li>
