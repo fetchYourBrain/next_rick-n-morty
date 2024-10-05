@@ -4,7 +4,7 @@ import "./globals.css";
 import { Header } from "./components/Header";
 import Footer from "./components/Footer";
 import { Container } from "./components/Container";
-import { kodeMonoFont } from "./fonts/SFmono";
+import { kodeMonoFont } from "./fonts/KodeMono";
 
 // const geistSans = localFont({
 //   src: "./fonts/GeistVF.woff",
