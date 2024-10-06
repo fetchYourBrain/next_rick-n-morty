@@ -1,4 +1,4 @@
-import { CharacterList } from '@/app/components/CharacterList';
+import { CharacterList } from "@/app/components/CharacterList/CharacterList"; 
 
 export default function CharactersPage() {
     return (
