@@ -5,6 +5,7 @@ import { Header } from "./components/Header";
 import Footer from "./components/Footer";
 import { Container } from "./components/Container";
 import { kodeMonoFont } from "./fonts/SFmono";
+import StoreProvider from "./storeProvider";
 
 // const geistSans = localFont({
 //   src: "./fonts/GeistVF.woff",
@@ -28,18 +29,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${kodeMonoFont.className} antialiased`}
-      >
-        <div className="wrapper">
-          <Header />
-          <Container>
-            {children}
-          </Container>
-          <Footer />
-        </div>
-      </body>
-    </html>
+    <StoreProvider>
+      <html lang="en">
+        <body
+          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        >
+          <div className="wrapper">
+            <Header />
+            <Container>{children}</Container>
+            <Footer />
+          </div>
+        </body>
+      </html>
+    </StoreProvider>
   );
 }
