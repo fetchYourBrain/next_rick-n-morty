@@ -37,7 +37,7 @@ export const Header = () => {
             sx={{ ml: 2 }}
             aria-haspopup="true"
           >
-            <Avatar sx={{ width: 32, height: 32 }}>Un</Avatar>
+            <Avatar sx={{ width: 32, height: 32 }}>U</Avatar>
           </IconButton>
         </Tooltip>
         </li>
