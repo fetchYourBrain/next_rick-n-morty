@@ -9,39 +9,57 @@ interface CharacterCardProps {
 export const CharacterCard: React.FC<CharacterCardProps> = ({ character }) => {
   const {id, name, status, species, gender, location, image } = character;
 
-  const getStatusColor = (status: string) =>
-    status.toLowerCase() === 'dead' ? 'bg-red-600' : 
-    status.toLowerCase() === 'alive' ? 'bg-green-600' : 'bg-violet-600';
+  const statusLower = status.toLowerCase();
+  const genderLower = gender.toLowerCase();
+  const isDeadStatus = statusLower === 'dead';
 
-  const isDeadStatus = status.toLowerCase() === 'dead';
+  const getStatusColor = () =>
+    statusLower === 'dead' ? 'bg-[#CC2008]' : 
+    statusLower === 'alive' ? 'bg-[#0E9E0B]' : 'bg-[#5623A8]';
 
-  const getBorderColorClass = (gender: string) =>
-    gender.toLowerCase() === 'male' ? 'border-blue-500' : 
-    gender.toLowerCase() === 'female' ? 'border-pink-500' : 'border-[#5CEDD6]';
+  const getBorderColorClass = () =>
+    genderLower === 'male' ? 'border-[#2A6AD5]' : 
+    genderLower === 'female' ? 'border-[#F90095]' : 'border-[#5CEDD6]';
 
   return (
-    <div className="relative flex w-full max-w-[400px] cursor-pointer flex-col rounded-md border-2 border-[#9DCE34] bg-[#031a16] shadow-md shadow-[#9DCE34] transition-all duration-300 hover:scale-105 hover:shadow-[0_0_15px_rgba(0,0,0,0.2)]">
-      <div className="absolute top-[-20px] flex h-[40px] w-[40px] self-center bg-[url('/img/portal.png')] bg-contain bg-center bg-no-repeat z-[1]">
-        <p className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-lg font-bold text-white [text-shadow:_-1px_-1px_0_#000,_1px_-1px_0_#000,_-1px_1px_0_#000,_1px_1px_0_#000,_0_-1px_0_#000,_0_1px_0_#000,_-1px_0_0_#000,_1px_0_0_#000]">
+    <article className="relative flex w-full max-w-[350px] min-w-[300px] flex-col bg-[#363A3A] border-[#9DCE34] cursor-pointer transition-all duration-300 hover:scale-105 hover:border-[#39FF14] hover:border-[1px] hover:shadow-[0_0_25px_5px_rgba(57,255,20,0.7)]">
+      <div className="absolute top-[-20px] z-[1] flex h-[40px] w-[40px] self-center bg-[url('/img/portal.png')] bg-contain bg-center bg-no-repeat">
+        <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-lg font-bold text-white [text-shadow:_-1px_-1px_0_#000,_1px_-1px_0_#000,_-1px_1px_0_#000,_1px_1px_0_#000,_0_-1px_0_#000,_0_1px_0_#000,_-1px_0_0_#000,_1px_0_0_#000]">
           {id}
-        </p>
+        </span>
       </div>  
 
-      <div className="flex-grow pb-2">
-        <div className="relative group">
-            <div className={`h-full w-full rounded-b-md border-b-8 ${getBorderColorClass(gender)}`}>
+      <div className="flex-grow py-[28px] px-[20px]">
+        <div className="relative group mb-[25px] overflow-hidden">
+            <div className="h-full w-full">
               <Image 
                 src={image} 
                 alt={name} 
                 width={270} 
                 height={270} 
-                className={`h-full w-full object-contain object-center shadow-md shadow-black/25 transition-all duration-300 
-                  ${isDeadStatus ? 'group-hover:grayscale' : ''}`}
+                className={`h-full w-full object-contain object-center transition-all duration-300 ${isDeadStatus ? 'group-hover:grayscale' : ''}`}
               />
             </div>
             
-            <div className={`absolute right-3 top-2 rounded-md px-2 py-1 text-center font-bold text-white transition-opacity duration-300 ${getStatusColor(status)} ${isDeadStatus ? 'group-hover:opacity-0' : ''}`}>
+            <div className={`absolute right-3 top-2 px-2 py-1 text-center font-bold text-white transition-opacity duration-300 ${getStatusColor()} ${isDeadStatus && 'group-hover:opacity-0'}`}>
               {status.toUpperCase()}
+            </div>
+
+            <div className="absolute bottom-3 right-0 transition-transform duration-300 group-hover:translate-x-full">
+              <div className={`inline-block bg-[#363A3A] border-b-8 ${getBorderColorClass()}`}>
+                <div className="flex flex-col gap-1 p-2 text-white">
+                  <h3 className="text-right text-base font-bold whitespace-nowrap">{name}</h3>
+                  <div className="flex items-center justify-end gap-1">
+                    <Image 
+                      src="/img/alien.svg" 
+                      alt="alien" 
+                      width={15}
+                      height={15}
+                    />
+                    <p>{species}</p>
+                  </div>
+                </div>
+              </div>
             </div>
 
             {isDeadStatus && (
@@ -61,29 +79,15 @@ export const CharacterCard: React.FC<CharacterCardProps> = ({ character }) => {
             )}
         </div>
       
-        <div className="flex flex-col gap-1 mb-2 border-b-2 border-dashed border-b-[#90bd2e86] py-2 text-white [text-shadow:_-1px_-1px_0_#000,_1px_-1px_0_#000,_-1px_1px_0_#000,_1px_1px_0_#000,_0_-1px_0_#000,_0_1px_0_#000,_-1px_0_0_#000,_1px_0_0_#000]">
-          <h4 className="text-left text-xl font-bold px-2">{name}</h4>
-          <div className="flex items-center gap-1 px-2">
-            <Image 
-              src="/img/alien.svg" 
-              alt="alien" 
-              width={15}
-              height={15}
-              className="opacity-50"
-            />
-            <p> {species}</p>
-          </div>
-        </div>
-
-        <div className="flex flex-col items-center text-[#8fbd2e]">
-          <p>Last seen on: </p>
-          <p className="text-center">
+        <div className="flex flex-col items-start w-full p-2 text-white bg-[#4B5050] border border-dashed border-[#0E9E0B]">
+          <p className="self-start">Last seen on: </p>
+          <p className="self-start">
             {(!location.name || location.name === 'unknown') 
               ? "Somewhere in space" 
               : location.name}
           </p>
         </div>
       </div>
-    </div>
+    </article>
   );
 };
