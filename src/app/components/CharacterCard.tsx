@@ -22,7 +22,7 @@ export const CharacterCard: React.FC<CharacterCardProps> = ({ character }) => {
     genderLower === 'female' ? 'border-[#F90095]' : 'border-[#5CEDD6]';
 
   return (
-    <article className="relative flex w-full max-w-[350px] min-w-[300px] flex-col bg-[#363A3A] border-[#9DCE34] cursor-pointer transition-all duration-300 hover:scale-105 hover:border-[#39FF14] hover:border-[1px] hover:shadow-[0_0_25px_5px_rgba(57,255,20,0.7)]">
+    <article className="relative flex w-full flex-col bg-[#363A3A] border-[#9DCE34] cursor-pointer transition-all duration-300 hover:scale-105 hover:border-[#39FF14] hover:border-[1px] hover:shadow-[0_0_25px_5px_rgba(57,255,20,0.7)]">
       <div className="absolute top-[-20px] z-[1] flex h-[40px] w-[40px] self-center bg-[url('/img/portal.png')] bg-contain bg-center bg-no-repeat">
         <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-lg font-bold text-white [text-shadow:_-1px_-1px_0_#000,_1px_-1px_0_#000,_-1px_1px_0_#000,_1px_1px_0_#000,_0_-1px_0_#000,_0_1px_0_#000,_-1px_0_0_#000,_1px_0_0_#000]">
           {id}
@@ -64,7 +64,7 @@ export const CharacterCard: React.FC<CharacterCardProps> = ({ character }) => {
 
             {isDeadStatus && (
               <div>
-                <div className="absolute left-1/2 top-1/2 z-10 -translate-x-1/2 -translate-y-1/2 text-6xl font-bold text-red-600 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                <div className="absolute left-1/2 top-1/2 z-[1] -translate-x-1/2 -translate-y-1/2 text-6xl font-bold text-red-600 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                   DEAD
                 </div>
                 
