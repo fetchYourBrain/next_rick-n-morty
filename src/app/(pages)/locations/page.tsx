@@ -1,6 +1,6 @@
 const Locations = () => {
     return ( 
-        <>Locations</>
+        <><h2 className="text-[#9DCE34] font-bold text-3xl md:text-4xl lg:text-5xl">Locations</h2></>
      );
 }
  

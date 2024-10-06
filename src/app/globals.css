@@ -2,11 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
-.wrapper{
+html {
+  height: 100vh;
+}
+
+body {
+  height: 100%;
+  background-color: #0f0f0f;
+  color: #fff;
+
+}
+
+.wrapper {
   display: flex;
   flex-direction: column;
 }
-.page{
+
+.page {
   flex-grow: 1;
 }
 
