@@ -1,4 +1,4 @@
-import Image from "next/image";
+import  Image from "next/image";
 
 const TECHSTACK = [
   "NextJS",
@@ -28,7 +28,7 @@ export default function Home() {
           {TECHSTACK.map((tech, index) => (
             <>
               <li
-                key={index}
+                key={tech}
                 className="flex items-center gap-2 bg-[#003A6F] p-1 rounded-md text-sm"
               >
                 {tech}
@@ -42,7 +42,7 @@ export default function Home() {
         <Image
           src="/img/home-background.png"
           alt="Rick and Morty picture"
-          height={200}
+          height={150}
           width={500}
         />
       </section>

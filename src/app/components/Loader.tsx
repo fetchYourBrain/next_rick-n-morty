@@ -16,7 +16,7 @@ export const Loader = () => {
             style={{ height: "200px", width: "300px" }}
           />
         </div>
-      </div>
+     </div>
     </div>
   );
 };
