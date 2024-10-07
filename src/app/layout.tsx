@@ -5,6 +5,7 @@ import Footer from "./components/Footer";
 import { Container } from "./components/Container";
 import { kodeMonoFont } from "./fonts/KodeMono";
 import StoreProvider from "./storeProvider";
+import TopBar from "./components/TopBar";
 
 export const metadata: Metadata = {
   title: "Rick N Morty | Home library",
@@ -19,12 +20,13 @@ export default function RootLayout({
   return (
     <StoreProvider>
       <html lang="en">
-        <body
-          className={`${kodeMonoFont.className} antialiased`}
-        >
+        <body className={`${kodeMonoFont.className} antialiased`}>
           <div className="wrapper">
             <Header />
-            <Container>{children}</Container>
+            <Container>
+              <TopBar />
+              {children}
+            </Container>
             <Footer />
           </div>
         </body>
