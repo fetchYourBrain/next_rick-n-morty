@@ -28,6 +28,13 @@ const config: Config = {
       '2xl': '1536px',
     },
     extend: {
+      cursor: {
+        'custom-default': 'url(/cursors/cursor.png), auto',
+        'custom-pointer': 'url(/cursors/pointer.cur), pointer',
+      },
+      animation: {
+        'spin-slow': 'spin 20s linear infinite',
+      },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",

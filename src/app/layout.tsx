@@ -29,18 +29,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <StoreProvider>
-      <html lang="en">
-        <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-        >
-          <div className="wrapper">
-            <Header />
-            <Container>{children}</Container>
-            <Footer />
-          </div>
-        </body>
-      </html>
-    </StoreProvider>
+    <html lang="en">
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      >
+        <div className="wrapper cursor-custom-default">
+          <Header />
+          <Container>
+            {children}
+          </Container>
+          <Footer />
+        </div>
+      </body>
+    </html>
   );
 }
