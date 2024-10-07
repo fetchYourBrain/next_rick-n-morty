@@ -1,12 +1,13 @@
+import { SortTypes } from "@/types/SortTypes";
 import { createSlice } from "@reduxjs/toolkit";
 
 interface stateProps {
-    sortField: 'id' | 'alphabetically',
+    sortField: SortTypes
     filterField: string,
 }
 
 const initialState: stateProps = {
-    sortField: 'id',
+    sortField: SortTypes.SortEmtpy,
     filterField: '',
 }
 

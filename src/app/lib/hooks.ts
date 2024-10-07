@@ -1,3 +1,4 @@
+'use client'
 import { AppDispatch, AppStore, RootState } from "./store";
 import { useDispatch, useSelector, useStore } from "react-redux";
 
