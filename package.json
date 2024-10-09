@@ -13,8 +13,13 @@
     "@emotion/styled": "^11.13.0",
     "@mui/material": "^6.1.2",
     "@reduxjs/toolkit": "^2.2.7",
+<<<<<<< HEAD
     "mobx": "^6.13.3",
     "mobx-react-lite": "^4.0.7",
+=======
+    "clsx": "^2.1.1",
+    "lottie-react": "^2.4.0",
+>>>>>>> 4efd8327935d19141a07ba75fc81ccd9eb76c7ba
     "next": "14.2.14",
     "react": "^18",
     "react-dom": "^18",
