@@ -1,10 +1,9 @@
-import { getImageUrl } from "@/features/getImageUrl";
 import { Avatar, IconButton, Tooltip } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
 
 const NAVIGATION = [
-  { name: "Home", href: "/"},
+  { name: "Home", href: "/" },
   { name: "Characters", href: "/characters" },
   { name: "Episodes", href: "/episodes" },
   { name: "Locations", href: "/locations" },
@@ -12,9 +11,9 @@ const NAVIGATION = [
 export const Header = () => {
   return (
     <header className=" bg-[#0f0f0f] h-16 items-center flex px-4 py-10 md:px-10 sticky top-0 mb-8 border-b-2 border-[#ffffff53] z-[2]">
-      <Link href='/' className="flex-1">
+      <Link href="/" className="flex-1">
         <Image
-          src='/logo.svg'
+          src="/logo.svg"
           alt="Logo"
           width={120}
           height={40}
@@ -32,15 +31,11 @@ export const Header = () => {
       </nav>
       <ul className="flex items-center justify-end flex-1">
         <li>
-        <Tooltip title="Login">
-          <IconButton
-            size="small"
-            sx={{ ml: 2 }}
-            aria-haspopup="true"
-          >
-            <Avatar sx={{ width: 32, height: 32 }}>U</Avatar>
-          </IconButton>
-        </Tooltip>
+          <Tooltip title="Login">
+            <IconButton size="small" sx={{ ml: 2 }} aria-haspopup="true">
+              <Avatar sx={{ width: 32, height: 32 }}>U</Avatar>
+            </IconButton>
+          </Tooltip>
         </li>
       </ul>
     </header>
