@@ -5,7 +5,7 @@ const useBreadcrumbs = () => {
   const pathname = usePathname();
 
   const pathTitle = (path: string) => {
-    const finalPath = path[0]?.toUpperCase() + path.slice(1);
+    const finalPath = path[0].toUpperCase() + path.slice(1);
     return finalPath;
   };
 

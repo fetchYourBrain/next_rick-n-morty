@@ -3,7 +3,7 @@ import "./globals.css";
 import { Header } from "./components/Header";
 import Footer from "./components/Footer";
 import { Container } from "./components/Container";
-import { kodeMonoFont } from "./fonts/KodeMono";
+import kodeMonoFont from "./fonts/KodeMono";
 import StoreProvider from "./storeProvider";
 import TopBar from "./components/TopBar";
 
