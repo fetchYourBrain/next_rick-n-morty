@@ -1,14 +1,12 @@
 "use client";
 import { Breadcrumbs } from "@mui/material";
-import { usePathname } from "next/navigation";
-import { kodeMonoFont } from "../fonts/KodeMono";
 import useBreadcrumbs from "@/hooks/useBreadcrumbs";
+// import kodeMonoFont from "../fonts/KodeMono";
 
 const TopBar = () => {
-  const pathname = usePathname();
   const breadcrumbs = useBreadcrumbs();
-  if (pathname === "/") {
-    return "";
+  if (breadcrumbs.length === 1) {
+    return null;
   }
 
   return (
@@ -16,7 +14,7 @@ const TopBar = () => {
       <nav className="">
         <Breadcrumbs
           separator="›"
-          className={`${kodeMonoFont.className} antialiased text-white text-md`}
+          className={`text-white text-md antialiased`}
         >
           {breadcrumbs}
         </Breadcrumbs>

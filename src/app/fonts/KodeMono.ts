@@ -1,3 +1,5 @@
 import { Kode_Mono } from 'next/font/google';
 
-export const kodeMonoFont = Kode_Mono({ subsets: ['latin']});
+const kodeMonoFont = Kode_Mono({ subsets: ['latin']});
+
+export default kodeMonoFont
