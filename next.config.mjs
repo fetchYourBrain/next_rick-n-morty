@@ -2,7 +2,7 @@
 const nextConfig = {
   basePath: '/next_rick-n-morty',
   assetPrefix: '/next_rick-n-morty',
-  output: 'export',
+  distDir: 'dist',
   images: {
     remotePatterns: [
       {
