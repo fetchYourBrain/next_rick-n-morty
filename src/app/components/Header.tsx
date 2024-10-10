@@ -21,7 +21,7 @@ const Header = () => {
     <header className=" bg-[#0f0f0f] h-16 items-center flex px-4 py-10 md:px-10 sticky top-0 mb-8 border-b-2 border-[#ffffff53] z-[2]">
       <Link href="/" className="flex-1">
         <Image
-          src="./images/logo.svg"
+          src="/next_rick-n-morty/images/logo.svg"
           alt="Logo"
           width={120}
           height={40}
