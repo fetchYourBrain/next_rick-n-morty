@@ -54,7 +54,7 @@ const Header = () => {
       <div className="flex-1 flex justify-center md:justify-start">
         <Link href="/" className="flex-1">
           <Image
-            src="/images/logo.svg"
+            src="/next_rick-n-morty/images/logo.svg"
             alt="Logo"
             width={120}
             height={40}
