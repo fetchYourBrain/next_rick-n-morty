@@ -16,7 +16,7 @@ export default function Footer() {
       <div className="w-full max-w-screen-xl mx-auto p-4 md:py-8">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
             <Image
-              src="/logo.svg"
+              src="./images/logo.svg"
               width={120}
               height={40}
               className="block"

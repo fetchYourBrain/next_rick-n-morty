@@ -38,7 +38,7 @@ export default function Home() {
           ))}
         </ul>
       </section>
-      <section className="flex flex-1 justify-center bg-[url('/portal.png')] bg-center bg-contain bg-no-repeat">
+      <section className="flex flex-1 justify-center bg-[url('/images/portal.png')] bg-center bg-contain bg-no-repeat">
         <Image
           src="/images/home-background.png"
           alt="Rick and Morty picture"

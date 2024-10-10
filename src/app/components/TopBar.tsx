@@ -1,7 +1,10 @@
 "use client";
 import { Breadcrumbs } from "@mui/material";
 import useBreadcrumbs from "@/hooks/useBreadcrumbs";
-// import kodeMonoFont from "../fonts/KodeMono";
+import { Kode_Mono } from "next/font/google";
+import SearchOptions from "./SearchOptions";
+
+const kodeMonoFont = Kode_Mono({ subsets: ["latin"] });
 
 const TopBar = () => {
   const breadcrumbs = useBreadcrumbs();
@@ -10,15 +13,16 @@ const TopBar = () => {
   }
 
   return (
-    <section className="flex flex-col-reverse md:flex-row items-center mb-10">
+    <section className="flex mb-10 flex-col gap-4">
       <nav className="">
         <Breadcrumbs
           separator="›"
-          className={`text-white text-md antialiased`}
+          className={`text-white text-md antialiased ${kodeMonoFont.className}`}
         >
           {breadcrumbs}
         </Breadcrumbs>
       </nav>
+      <SearchOptions />
     </section>
   );
 };

@@ -1,16 +1,18 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Header } from "./components/Header";
+import { Kode_Mono } from "next/font/google";
+import Header from "./components/Header";
 import Footer from "./components/Footer";
 import { Container } from "./components/Container";
-import kodeMonoFont from "./fonts/KodeMono";
-import StoreProvider from "./storeProvider";
 import TopBar from "./components/TopBar";
+import StoreProvider from "./StoreProvider";
 
 export const metadata: Metadata = {
   title: "Rick N Morty | Home library",
   description: "Welcome to library of Rick N Morty cartoon.",
 };
+
+const kodeMonoFont = Kode_Mono({ subsets: ["latin"], display: "swap", style: 'normal'});
 
 export default function RootLayout({
   children,
