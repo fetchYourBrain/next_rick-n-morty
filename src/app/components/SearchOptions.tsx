@@ -1,7 +1,7 @@
 "use client";
 
 import clsx from "clsx";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const SORT_OPTIONS = [
   {
@@ -20,8 +20,6 @@ const SORT_OPTIONS = [
 const SearchOptions = () => {
   const [open, setOpen] = useState(false);
   const [sortType, setSortType] = useState(SORT_OPTIONS[0].label);
-
-//   useEffect(() => {setOpen(false)},[])
 
   const handleOpen = () => {
     setOpen(!open);
@@ -49,7 +47,7 @@ const SearchOptions = () => {
           <ul className="">
             {SORT_OPTIONS.map((option) => (
               <li
-              key={option.label}
+                key={option.label}
                 onClick={() => handleSelectOption(option.label)}
                 className="py-3 px-4 hover:text-[#9DCE34] hover:bg-[#13b0c88b] cursor-pointer transition-colors ease-in-out"
               >
