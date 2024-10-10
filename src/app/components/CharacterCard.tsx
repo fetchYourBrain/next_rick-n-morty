@@ -23,7 +23,7 @@ export const CharacterCard: React.FC<CharacterCardProps> = ({ character }) => {
 
   return (
     <article className="relative flex w-full flex-col bg-[#363A3A] border-[#9DCE34] cursor-pointer transition-all duration-300 hover:scale-105 hover:border-[#39FF14] hover:border-[1px] hover:shadow-[0_0_25px_5px_rgba(57,255,20,0.7)]">
-      <div className="absolute top-[-20px] z-[1] flex h-[40px] w-[40px] self-center bg-[url('/images/portal.png')] bg-contain bg-center bg-no-repeat">
+      <div className="absolute top-[-20px] z-[1] flex h-[40px] w-[40px] self-center bg-[url('/next_rick-n-morty/images/portal.png')] bg-contain bg-center bg-no-repeat">
         <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-lg font-bold text-white [text-shadow:_-1px_-1px_0_#000,_1px_-1px_0_#000,_-1px_1px_0_#000,_1px_1px_0_#000,_0_-1px_0_#000,_0_1px_0_#000,_-1px_0_0_#000,_1px_0_0_#000]">
           {id}
         </span>
@@ -51,7 +51,7 @@ export const CharacterCard: React.FC<CharacterCardProps> = ({ character }) => {
                   <h3 className="text-right text-base font-bold whitespace-nowrap">{name}</h3>
                   <div className="flex items-center justify-end gap-1">
                     <Image 
-                      src="/images/alien.svg" 
+                      src="/next_rick-n-morty/images//alien.svg" 
                       alt="alien" 
                       width={15}
                       height={15}
@@ -69,7 +69,7 @@ export const CharacterCard: React.FC<CharacterCardProps> = ({ character }) => {
                 </div>
                 
                 <Image 
-                  src="/images/dead.svg" 
+                  src="/next_rick-n-morty/images/dead.svg" 
                   alt="Dead" 
                   width={200}
                   height={200}
