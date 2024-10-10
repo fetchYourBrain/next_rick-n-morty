@@ -1,5 +1,7 @@
+"use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useMemo } from "react";
 
 const useBreadcrumbs = () => {
   const pathname = usePathname();
@@ -9,18 +11,14 @@ const useBreadcrumbs = () => {
     return finalPath;
   };
 
-  const breadcrumbs = [
-    <Link key="1" href="/">
-      Home
-    </Link>,
-    ...pathname
-      .split("/")
-      .slice(1)
-      .filter(Boolean)
-      .map((path, index, arr) =>
+  const breadcrumbs = useMemo(() => {
+    const paths = pathname.split("/").slice(1).filter(Boolean);
+    return [
+      <Link key="1" href="/">Home</Link>,
+      ...paths.map((path, index, arr) =>
         index === arr.length - 1 ? (
           <Link
-            key={index + 2}
+            key={path}
             href={`/${path}`}
             className="text-3xl text-[#9DCE34] font-bold"
           >
@@ -32,7 +30,8 @@ const useBreadcrumbs = () => {
           </Link>
         )
       ),
-  ];
+    ];
+  }, [pathname]); // Залежність - pathname
 
   return breadcrumbs;
 };
