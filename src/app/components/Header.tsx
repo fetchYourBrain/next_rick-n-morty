@@ -26,30 +26,34 @@ const Header = () => {
     <header className="bg-[#0f0f0f] h-16 flex items-center px-4 py-10 md:px-10 sticky top-0 mb-8 border-b-2 border-[#ffffff53] z-[2]">
       <div className="flex-1 flex items-center md:hidden">
         <button
-          className="flex flex-col h-8 w-8 border-2 border-[#ffffff53] rounded justify-center items-center group" 
+          className="flex flex-col h-8 w-8 border-2 border-[#ffffff53] rounded justify-center items-center group"
           onClick={() => setIsOpen(!isOpen)}
         >
           <div
-            className={`${genericHamburgerLine} ${
+            className={clsx(
+              genericHamburgerLine,
               isOpen
                 ? "rotate-45 translate-y-1.5 opacity-50 group-hover:opacity-100"
                 : "opacity-50 group-hover:opacity-100"
-            }`}
+            )}
           />
           <div
-            className={`${genericHamburgerLine} ${
+            className={clsx(
+              genericHamburgerLine,
               isOpen ? "opacity-0" : "opacity-50 group-hover:opacity-100"
-            }`}
+            )}
           />
           <div
-            className={`${genericHamburgerLine} ${
+            className={clsx(
+              genericHamburgerLine,
               isOpen
                 ? "-rotate-45 -translate-y-1.5 opacity-50 group-hover:opacity-100"
                 : "opacity-50 group-hover:opacity-100"
-            }`}
+            )}
           />
         </button>
       </div>
+
 
       <div className="flex-1 flex justify-center md:justify-start">
         <Link href="/" className="flex-1">

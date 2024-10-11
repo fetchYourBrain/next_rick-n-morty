@@ -4,6 +4,7 @@ import { NAVIGATION } from "@/types/Navigation";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
+import clsx from "clsx";
 
 interface BurgerMenuProps {
   isOpen: boolean;
@@ -23,9 +24,10 @@ export const BurgerMenu: React.FC<BurgerMenuProps> = ({ isOpen, onClose }) => {
                 <Link
                   href={nav.href}
                   onClick={onClose}
-                  className={`flex items-center ${
-                    pathname === nav.href ? "text-[#9DCE34]" : "text-white"
-                  }`}
+                  className={clsx(
+                    'flex items-center',
+                    pathname === nav.href ? 'text-[#9DCE34]' : 'text-white'
+                  )}
                 >
                   {nav.name}
                   {pathname === nav.href && (
@@ -46,4 +48,5 @@ export const BurgerMenu: React.FC<BurgerMenuProps> = ({ isOpen, onClose }) => {
     )
   );
 };
+
 
