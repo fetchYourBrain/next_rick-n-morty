@@ -30,26 +30,22 @@ const Header = () => {
           onClick={() => setIsOpen(!isOpen)}
         >
           <div
-            className={clsx(
-              genericHamburgerLine,
-              isOpen
-                ? "rotate-45 translate-y-1.5 opacity-50 group-hover:opacity-100"
-                : "opacity-50 group-hover:opacity-100"
-            )}
+            className={clsx(genericHamburgerLine, {
+              "rotate-45 translate-y-1.5 opacity-50 group-hover:opacity-100": isOpen,
+              "opacity-50 group-hover:opacity-100": !isOpen,
+            })}
           />
           <div
-            className={clsx(
-              genericHamburgerLine,
-              isOpen ? "opacity-0" : "opacity-50 group-hover:opacity-100"
-            )}
+            className={clsx(genericHamburgerLine, {
+              "opacity-0": isOpen,
+              "opacity-50 group-hover:opacity-100": !isOpen,
+            })}
           />
           <div
-            className={clsx(
-              genericHamburgerLine,
-              isOpen
-                ? "-rotate-45 -translate-y-1.5 opacity-50 group-hover:opacity-100"
-                : "opacity-50 group-hover:opacity-100"
-            )}
+            className={clsx(genericHamburgerLine, {
+              "-rotate-45 -translate-y-1.5 opacity-50 group-hover:opacity-100": isOpen,
+              "opacity-50 group-hover:opacity-100": !isOpen,
+            })}
           />
         </button>
       </div>

@@ -24,10 +24,10 @@ export const BurgerMenu: React.FC<BurgerMenuProps> = ({ isOpen, onClose }) => {
                 <Link
                   href={nav.href}
                   onClick={onClose}
-                  className={clsx(
-                    'flex items-center',
-                    pathname === nav.href ? 'text-[#9DCE34]' : 'text-white'
-                  )}
+                  className={clsx('flex items-center', {
+                    'text-[#9DCE34]': pathname === nav.href,
+                    'text-white': pathname !== nav.href,
+                  })}
                 >
                   {nav.name}
                   {pathname === nav.href && (
