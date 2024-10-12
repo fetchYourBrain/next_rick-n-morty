@@ -6,8 +6,10 @@ export const ThemeButtonToggle = () => {
   const { resolvedTheme, setTheme } = useTheme();
   return (
     <div>
-      <button onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}>{resolvedTheme === "dark" ? "light" : "dark"}</button>
+      <button className="text-light-text dark:text-dark-text border border-red-600" onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}>PRESSSSSSS!</button>
     </div>
   );
 };
 
+
+// {resolvedTheme === "dark" ? "light" : "dark"}

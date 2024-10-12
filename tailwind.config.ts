@@ -40,14 +40,24 @@ const config: Config = {
       },
       colors: {
         // КОЛЬОРИ СВІТЛОЇ ТЕМИ
-        'light-bg': '#B5BEC6',
-        'light-text': '#000000',
+        'light-bg': '#F3F3F3',
+        'light-text': '#1c1c1c',
         'light-title-text': '#6A0DAD',
+        'light-btn': '#00A7E4',
+        'light-divider': '#d8d8d8',
+        'light-card-bg': '#ffffff',
+        'light-card-alt-bg': '#f2f2f2',
+
+
 
         // КОЛЬОРИ ТЕМНОЇ ТЕМИ
         'dark-bg': '#1C1C1C',
-        'dark-text': '#FFFFFF',
+        'dark-text': '#F3F3F3',
         'dark-title-text': '#00FF00',
+        'dark-btn': '#FB6467',
+        'dark-divider': '#2a2a2a',
+        'dark-card-bg': '#262626',
+        'dark-card-alt-bg': '#2e2e2e',
       },
       keyframes: {
         rotateIn: {
