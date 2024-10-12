@@ -6,6 +6,7 @@ const config: Config = {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  darkMode: 'class',
   theme: {
     container: {
       padding: {
@@ -38,8 +39,15 @@ const config: Config = {
         "rotate-in": "rotateIn 0.5s ease-out",
       },
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        // КОЛЬОРИ СВІТЛОЇ ТЕМИ
+        'light-bg': '#B5BEC6',
+        'light-text': '#000000',
+        'light-title-text': '#6A0DAD',
+
+        // КОЛЬОРИ ТЕМНОЇ ТЕМИ
+        'dark-bg': '#1C1C1C',
+        'dark-text': '#FFFFFF',
+        'dark-title-text': '#00FF00',
       },
       keyframes: {
         rotateIn: {

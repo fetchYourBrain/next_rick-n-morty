@@ -8,6 +8,7 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { BurgerMenu } from "./BurgerMenu";
 import { NAVIGATION } from "@/types/Navigation";
+import {ThemeButtonToggle} from '@/app/components/ThemeToggle';
 
 
 const Header = () => {
@@ -82,6 +83,8 @@ const Header = () => {
           </Tooltip>
         </li>
       </ul>
+      
+      <ThemeButtonToggle />
 
       <BurgerMenu isOpen={isOpen} onClose={handleLinkClick} />
     </header>
