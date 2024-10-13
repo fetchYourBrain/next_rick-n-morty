@@ -36,20 +36,20 @@ const SearchOptions = () => {
       >
         <div className="flex gap-2 items-center">
           <span>Sort by:</span>
-          <p className="bg-[#003A6F] py-1 px-3 rounded-sm">{sortType}</p>
+          <p className="bg-light-btn dark:bg-dark-btn py-1 px-3 rounded-sm">{sortType}</p>
         </div>
         <div
           className={clsx(
-            `absolute top-10 z-[3] bg-[#000000b6] border-[#9DCE34] border-[1px] backdrop-blur-sm`,
+            `absolute top-10 z-[3] bg-light-bg dark:bg-dark-bg border-light-title-text dark:border-dark-title-text border-[1px] backdrop-blur-sm`,
             { hidden: !open }
           )}
         >
-          <ul className="">
+          <ul>
             {SORT_OPTIONS.map((option) => (
               <li
                 key={option.label}
                 onClick={() => handleSelectOption(option.label)}
-                className="py-3 px-4 hover:text-[#9DCE34] hover:bg-[#13b0c88b] cursor-pointer transition-colors ease-in-out"
+                className="py-3 px-4 hover:text-light-title-text dark:hover:text-dark-title-text hover:bg-light-card-bg dark:hover:bg-dark-card-bg cursor-pointer transition-colors ease-in-out"
               >
                 {option.label}
               </li>

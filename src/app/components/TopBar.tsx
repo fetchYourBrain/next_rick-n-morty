@@ -14,10 +14,10 @@ const TopBar = () => {
 
   return (
     <section className="flex mb-10 flex-col gap-4">
-      <nav className="">
+      <nav>
         <Breadcrumbs
           separator="›"
-          className={`text-white text-md antialiased ${kodeMonoFont.className}`}
+          className={`text-light-text dark:text-dark-text text-md antialiased ${kodeMonoFont.className}`}
         >
           {breadcrumbs}
         </Breadcrumbs>

@@ -8,22 +8,20 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { BurgerMenu } from "./BurgerMenu";
 import { NAVIGATION } from "@/types/Navigation";
+import {ThemeButtonToggle} from '@/app/components/ThemeToggle';
 
 
 const Header = () => {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const genericHamburgerLine = `h-0.5 w-4 my-0.5 rounded-full bg-white transition ease transform duration-300`;
-  const activeLink = () => {
-    return 'text-[#9DCE34] font-bold';
-  }
 
   const handleLinkClick = () => {
     setIsOpen(false);
   };
 
   return (
-    <header className="bg-[#0f0f0f] h-16 flex items-center px-4 py-10 md:px-10 sticky top-0 mb-8 border-b-2 border-[#ffffff53] z-[2]">
+    <header className="bg-light-bg dark:bg-dark-bg h-16 flex items-center px-4 py-10 md:px-10 sticky top-0 mb-8 border-b-2 border-light-divider dark:border-dark-divider z-[2]">
       <div className="flex-1 flex items-center md:hidden">
         <button
           className="flex flex-col h-8 w-8 border-2 border-[#ffffff53] rounded justify-center items-center group"
@@ -66,12 +64,18 @@ const Header = () => {
       <nav className="hidden md:flex mx-auto flex-1 justify-center">
         <ul className="flex items-center gap-6">
           {NAVIGATION.map((nav) => (
-            <li key={nav.name} className={clsx({[activeLink()]: pathname === nav.href})}>
+            <li key={nav.name} className={clsx({
+              'text-light-btn dark:text-dark-btn': pathname === nav.href, // активний лінк
+              'text-light-text dark:text-dark-text': pathname !== nav.href  // неактивний лінк
+            })}>
               <Link href={nav.href}>{nav.name}</Link>
             </li>
           ))}
         </ul>
       </nav>
+
+      <ThemeButtonToggle />
+
 
       <ul className="flex items-center justify-end flex-1">
         <li>
@@ -82,7 +86,7 @@ const Header = () => {
           </Tooltip>
         </li>
       </ul>
-
+      
       <BurgerMenu isOpen={isOpen} onClose={handleLinkClick} />
     </header>
   );
