@@ -1,4 +1,5 @@
 "use client";
+import { Tooltip } from "@mui/material";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useMemo } from "react";
@@ -11,19 +12,24 @@ const useBreadcrumbs = () => {
     return finalPath;
   };
 
+
   const breadcrumbs = useMemo(() => {
     const paths = pathname.split("/").slice(1).filter(Boolean);
     return [
-      <Link key="1" href="/">Home</Link>,
+      <Link key="1" href="/">
+        Home
+      </Link>,
       ...paths.map((path, index, arr) =>
         index === arr.length - 1 ? (
-          <Link
-            key={path}
-            href={`/${path}`}
-            className="text-3xl text-ligth-primary dark:text-dark-primary font-bold"
-          >
-            {pathTitle(path)}
-          </Link>
+          <Tooltip title="God damn it, you already here, Morty!" arrow>
+            <Link
+              key={path}
+              href={`/${path}`}
+              className="text-3xl text-[#9DCE34] font-bold"
+            >
+              {pathTitle(path)}
+            </Link>
+          </Tooltip>
         ) : (
           <Link key={index + 2} href={`/${path}`}>
             {pathTitle(path)}
