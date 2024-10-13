@@ -1,4 +1,6 @@
 import { Character } from "./types/Character";
+import { Episode } from "./types/Episode";
+import { Location } from "./types/Location";
 
 const BASE_URL = 'https://rickandmortyapi.com/api'
 
@@ -9,10 +11,20 @@ const BASE_URL = 'https://rickandmortyapi.com/api'
 // }
 
 function get<T>(url: string): Promise<T> {
-  const fullURL = BASE_URL + url
+  const fullURL = BASE_URL + url;
 
   return fetch(fullURL)
-    .then((res) => res.json()).then((data) => data.results);
+    .then((res) => res.json())
+    .then((data) => data.results ? data.results : data);
 }
 
 export const getAllCharacters = () => get<Character[]>("/character");
+export const getAllEpisodes = () => get<Episode[]>("/episode");
+export const getAllLocations = () => get<Location[]>("/location")
+
+export const getEpisode = (id: string) => get<Episode>(`/episode/${id}`);
+export const getLocation = (id: string) => get<Location>(`/location/${id}`);
+export const getCharacter = (id: string) => get<Character>(`/character/${id}`);
+
+export const getMultipleEpisodes = (ids: string[]) => get<Episode[]>(`/episode/${ids.join(',')}`);
+export const getMultipleCharacters = (ids: string[]) => get<Character[]>(`/character/${ids.join(',')}`);

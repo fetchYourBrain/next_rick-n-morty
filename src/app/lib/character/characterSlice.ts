@@ -1,4 +1,4 @@
-import { getAllCharacters } from "@/api";
+import { getAllCharacters, getCharacter, getMultipleCharacters } from "@/api";
 import { Character } from "@/types/Character";
 import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
@@ -24,6 +24,26 @@ export const fetchAllCharacters = createAsyncThunk(
       console.error("Failed to fetch characters:", error);
       throw error;
     }
+  }
+);
+
+export const fetchCharacterData = createAsyncThunk(
+  "characters/fetchCharacterData",
+  async (id: string) => {
+    try {
+      const response = await getCharacter(id);
+      return response;
+    } catch (error) {
+      throw error;
+    }
+  }
+);
+
+export const fetchMultipleCharacters = createAsyncThunk(
+  "characters/fetchMultipleCharacters",
+  async (ids: string[]) => {
+    const response = await getMultipleCharacters(ids);
+    return response;
   }
 );
 

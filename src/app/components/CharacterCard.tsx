@@ -1,5 +1,6 @@
 import { Character } from '@/types/Character';
 import Image from 'next/image';
+import Link from 'next/link';
 
 interface CharacterCardProps {
   key?: number;
@@ -22,15 +23,16 @@ export const CharacterCard: React.FC<CharacterCardProps> = ({ character }) => {
     genderLower === 'female' ? 'border-[#F90095]' : 'border-[#5CEDD6]';
 
   return (
-    <article className="relative flex w-full flex-col bg-[#363A3A] border-[#9DCE34] cursor-pointer transition-all duration-300 hover:scale-105 hover:border-[#39FF14] hover:border-[1px] hover:shadow-[0_0_25px_5px_rgba(57,255,20,0.7)]">
-      <div className="absolute top-[-20px] z-[1] flex h-[40px] w-[40px] self-center bg-[url('/images/portal.png')] bg-contain bg-center bg-no-repeat">
-        <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-lg font-bold text-white [text-shadow:_-1px_-1px_0_#000,_1px_-1px_0_#000,_-1px_1px_0_#000,_1px_1px_0_#000,_0_-1px_0_#000,_0_1px_0_#000,_-1px_0_0_#000,_1px_0_0_#000]">
-          {id}
-        </span>
-      </div>  
+    <Link href={`/characters/${id}`}>
+      <article className="relative flex w-full flex-col bg-[#363A3A] border-[#9DCE34] cursor-pointer transition-all duration-300 hover:scale-105 hover:border-[#39FF14] hover:border-[1px] hover:shadow-[0_0_25px_5px_rgba(57,255,20,0.7)]">
+        <div className="absolute top-[-20px] z-[1] flex h-[40px] w-[40px] self-center bg-[url('/images/portal.png')] bg-contain bg-center bg-no-repeat">
+          <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-lg font-bold text-white [text-shadow:_-1px_-1px_0_#000,_1px_-1px_0_#000,_-1px_1px_0_#000,_1px_1px_0_#000,_0_-1px_0_#000,_0_1px_0_#000,_-1px_0_0_#000,_1px_0_0_#000]">
+            {id}
+          </span>
+        </div>  
 
-      <div className="flex-grow py-[28px] px-[20px]">
-        <div className="relative group mb-[25px] overflow-hidden">
+        <div className="flex-grow py-[28px] px-[20px]">
+          <div className="relative group mb-[25px] overflow-hidden">
             <div className="h-full w-full">
               <Image 
                 src={image} 
@@ -77,17 +79,18 @@ export const CharacterCard: React.FC<CharacterCardProps> = ({ character }) => {
                 />
               </div>             
             )}
-        </div>
+          </div>
       
-        <div className="flex flex-col items-start w-full p-2 text-white bg-[#4B5050] border border-dashed border-[#0E9E0B]">
-          <p className="self-start">Last seen on: </p>
-          <p className="self-start">
-            {(!location.name || location.name === 'unknown') 
-              ? "Somewhere in space" 
-              : location.name}
-          </p>
+          <div className="flex flex-col items-start w-full p-2 text-white bg-[#4B5050] border border-dashed border-[#0E9E0B]">
+            <p className="self-start">Last seen on: </p>
+            <p className="self-start">
+              {(!location.name || location.name === 'unknown') 
+                ? "Somewhere in space" 
+                : location.name}
+            </p>
+          </div>
         </div>
-      </div>
-    </article>
+      </article>
+    </Link>
   );
 };
