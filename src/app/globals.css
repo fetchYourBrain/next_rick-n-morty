@@ -8,8 +8,6 @@ html {
 
 body {
   height: 100%;
-  background-color: #0f0f0f;
-  color: #fff;
 
 }
 
@@ -20,10 +18,6 @@ body {
 
 .page {
   flex-grow: 1;
-}
-
-body{
-  background-color: #0f0f0f;
 }
 
 * {
