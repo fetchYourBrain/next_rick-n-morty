@@ -1,3 +1,4 @@
+import { CharacterCard } from "@/app/components/CharacterCard";
 import { fetchMultipleCharacters } from "@/app/lib/character/characterSlice";
 import { fetchEpisodeData } from "@/app/lib/episode/episodeSlice";
 import store from "@/app/lib/store";
@@ -25,12 +26,12 @@ const EpisodePage = async ({ params }: { params: { id: string } }) => {
 
   return (
     <div>
-      <h1>{name}</h1>
-      <h2>{characterCount} {characterCount === 1 ? 'character' : 'characters'}</h2> 
-      <ul>
+      <h1 className="text-2xl font-bold">{name}</h1>
+      <h2 className="text-xl font-bold mb-8">{characterCount} {characterCount === 1 ? 'character' : 'characters'}</h2> 
+      <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 gap-y-8">
         {characters.map((character: Character) => (
           <li key={character.id}>
-            <Link href={`/characters/${character.id}`}>{character.name}</Link> 
+            <Link href={`/characters/${character.id}`}><CharacterCard character={character} /></Link> 
           </li>
         ))}
       </ul>

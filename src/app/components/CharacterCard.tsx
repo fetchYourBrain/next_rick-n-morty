@@ -81,7 +81,7 @@ export const CharacterCard: React.FC<CharacterCardProps> = ({ character }) => {
             )}
           </div>
       
-          <div className="flex flex-col items-start w-full p-2 text-light-text dark:text-dark-text bg-light-card-alt-bg dark:bg-dark-card-alt-bg border border-dashed border-light-title-text dark:border-dark-title-text ">
+          <div className="flex flex-col items-start w-full p-2 text-light-text dark:text-dark-text bg-light-card-alt-bg dark:bg-dark-card-alt-bg border border-dashed border-light-title-text dark:border-dark-title-text min-h-[90px]">
             <p className="text-[#4d4d4d] dark:text-[#9b9b9b] self-start">
               Last seen on: 
             </p>

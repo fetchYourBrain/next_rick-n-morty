@@ -1,3 +1,4 @@
+import { EpisodeCard } from "@/app/components/EpisodeCard";
 import { fetchCharacterData } from "@/app/lib/character/characterSlice";
 import { fetchMultipleEpisodes } from "@/app/lib/episode/episodeSlice";
 import store from "@/app/lib/store";
@@ -47,11 +48,11 @@ const CharacterPage = async ({ params }: { params: { id: string } }) => {
       <p>Gender: {gender}</p>
       <p>Origin: {originLink}</p>
       <p>Location: {locationLink}</p>
-      <h2>Episodes: {episodeCount} {episodeCount === 1 ? 'episode' : 'episodes'}</h2>
-      <ul>
-        {episodes.map(({ id, name }: Episode) => ( 
-          <li key={id}>
-            <Link href={`/episodes/${id}`}>{name}</Link>
+      <h2 className="text-xl font-bold mb-8">Episodes: {episodeCount} {episodeCount === 1 ? 'episode' : 'episodes'}</h2>
+      <ul className="flex flex-col gap-4">
+        {episodes.map((episode: Episode) => ( 
+          <li key={episode.id}>
+            <Link href={`/episodes/${episode.id}`}><EpisodeCard episodeInfo={episode} /></Link>
           </li> 
         ))}
       </ul>

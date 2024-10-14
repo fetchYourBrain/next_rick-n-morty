@@ -1,3 +1,4 @@
+import { CharacterCard } from "@/app/components/CharacterCard";
 import { fetchAllCharacters, fetchMultipleCharacters } from "@/app/lib/character/characterSlice";
 import { fetchLocationData } from "@/app/lib/location/locationSlice";
 import store from "@/app/lib/store";
@@ -26,21 +27,26 @@ const LocationPage = async ({ params }: { params: { id: string } }) => {
     });
   }
 
-  const filteredCharacters = filterCharactersByOrigin(characters, location.name);
-  function filterCharactersByOrigin(characters: Character[], locationName: string): Character[] {
-    return [...characters].filter(character => character.origin.name === locationName);
-  }
 
+  function filterCharactersByOrigin(characters: Character[], locationName: string): Character[] {
+    console.log("Filtering characters by origin:", locationName);
+    return [...characters].filter(character => {
+      console.log("Character origin:", character.origin.name);
+      return character.origin.name === locationName;
+    });
+  }
+  const filteredCharacters = filterCharactersByOrigin(characters, location.name);
+  console.log("Filtered characters:", filteredCharacters);
   const residentsCount = residents.length;
 
   return (
     <div>
-      <h1>{location.name}</h1>
-      <h2>{residentsCount} {residentsCount === 1 ? 'resident' : 'residents'}</h2>
-      <ul>
+      <h1 className="text-2xl font-bold">{location.name}</h1>
+      <h2 className="text-xl font-bold mb-8">Residents: {residentsCount} {residentsCount === 1 ? 'resident' : 'residents'}</h2>
+      <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 gap-y-8">
         {residents.map((resident: Character) => (
           <li key={resident.id}>
-            <Link href={`/characters/${resident.id}`}>{resident.name}</Link>
+            <Link href={`/characters/${resident.id}`}><CharacterCard character={resident} /></Link>
           </li>
         ))}
       </ul>
