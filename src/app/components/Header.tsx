@@ -9,10 +9,8 @@ import { useState } from "react";
 import { BurgerMenu } from "./BurgerMenu";
 import { NAVIGATION } from "@/types/Navigation";
 import {ThemeButtonToggle} from '@/app/components/ThemeToggle';
-import { useSession, signIn, signOut } from "next-auth/react";
 
 const Header = () => {
-  const { data: session } = useSession();
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const genericHamburgerLine = `h-0.5 w-4 my-0.5 rounded-full bg-white transition ease transform duration-300`;
@@ -65,8 +63,8 @@ const Header = () => {
         <ul className="flex items-center gap-6">
           {NAVIGATION.map((nav) => (
             <li key={nav.name} className={clsx({
-              'text-light-btn dark:text-dark-btn': pathname === nav.href, // активний лінк
-              'text-light-text dark:text-dark-text': pathname !== nav.href  // неактивний лінк
+              'text-light-btn dark:text-dark-btn': pathname === nav.href,
+              'text-light-text dark:text-dark-text': pathname !== nav.href
             })}>
               <Link href={nav.href}>{nav.name}</Link>
             </li>
@@ -79,17 +77,9 @@ const Header = () => {
 
       <ul className="flex items-center justify-end flex-1">
         <li>
-          <Tooltip title={session ? "Logout" : "Login"}>
-            <IconButton
-              size="small"
-              sx={{ ml: 2 }}
-              aria-haspopup="true"
-              onClick={() => session ? signOut() : signIn("credentials", {
-                username: "Test User",
-                password: "nextauth"
-              })}
-            >
-              <Avatar sx={{ width: 32, height: 32 }}>{session ? "U" : "L"}</Avatar>
+          <Tooltip title="Login">
+            <IconButton size="small" sx={{ ml: 2 }} aria-haspopup="true">
+              <Avatar sx={{ width: 32, height: 32 }}>U</Avatar>
             </IconButton>
           </Tooltip>
         </li>
