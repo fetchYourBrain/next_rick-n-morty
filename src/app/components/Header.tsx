@@ -8,9 +8,13 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { BurgerMenu } from "./BurgerMenu";
 import { NAVIGATION } from "@/types/Navigation";
-import {ThemeButtonToggle} from '@/app/components/ThemeToggle';
+import { ThemeButtonToggle } from '@/app/components/ThemeToggle';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { auth } from '@/app/firebase/config';
+import { signOut } from "firebase/auth";
 
 const Header = () => {
+  const [user] = useAuthState(auth);
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const genericHamburgerLine = `h-0.5 w-4 my-0.5 rounded-full bg-white transition ease transform duration-300`;
@@ -19,29 +23,34 @@ const Header = () => {
     setIsOpen(false);
   };
 
+  const handleLogout = async () => {
+    await signOut(auth);
+    sessionStorage.removeItem('user');
+  };
+
   return (
     <header className="bg-light-bg dark:bg-dark-bg h-16 flex items-center px-4 py-10 md:px-10 sticky top-0 mb-8 border-b-2 border-light-divider dark:border-dark-divider z-[2]">
       <div className="flex-1 flex items-center md:hidden">
         <button
-          className="flex flex-col h-8 w-8 border-2 border-[#ffffff53] rounded justify-center items-center group"
+          className="flex flex-col h-8 w-8 border-2 border-[#1d1b1b53] dark:border-[#ffffff80] rounded justify-center items-center group"
           onClick={() => setIsOpen(!isOpen)}
         >
           <div
             className={clsx(genericHamburgerLine, {
-              "rotate-45 translate-y-1.5 opacity-50 group-hover:opacity-100": isOpen,
-              "opacity-50 group-hover:opacity-100": !isOpen,
+              "bg-[#1d1b1b53] dark:bg-[#ffffff9f] rotate-45 translate-y-1.5 opacity-50 group-hover:opacity-100": isOpen,
+              "bg-[#1d1b1b53] dark:bg-[#ffffff9f] opacity-50 group-hover:opacity-100": !isOpen,
             })}
           />
           <div
             className={clsx(genericHamburgerLine, {
-              "opacity-0": isOpen,
-              "opacity-50 group-hover:opacity-100": !isOpen,
+              "bg-[#1d1b1b53] dark:bg-[#ffffff9f] opacity-0": isOpen,
+              "bg-[#1d1b1b53] dark:bg-[#ffffff9f] opacity-50 group-hover:opacity-100": !isOpen,
             })}
           />
           <div
             className={clsx(genericHamburgerLine, {
-              "-rotate-45 -translate-y-1.5 opacity-50 group-hover:opacity-100": isOpen,
-              "opacity-50 group-hover:opacity-100": !isOpen,
+              "bg-[#1d1b1b53] dark:bg-[#ffffff9f] -rotate-45 -translate-y-1.5 opacity-50 group-hover:opacity-100": isOpen,
+              "bg-[#1d1b1b53] dark:bg-[#ffffff9f] opacity-50 group-hover:opacity-100": !isOpen,
             })}
           />
         </button>
@@ -74,12 +83,15 @@ const Header = () => {
 
       <ThemeButtonToggle />
 
-
       <ul className="flex items-center justify-end flex-1">
         <li>
-          <Tooltip title="Login">
-            <IconButton size="small" sx={{ ml: 2 }} aria-haspopup="true">
-              <Avatar sx={{ width: 32, height: 32 }}>U</Avatar>
+          <Tooltip title={user ? "Logout" : "Login"}>
+            <IconButton
+              size="small"
+              sx={{ ml: 2 }}
+              aria-haspopup="true"
+              onClick={user ? handleLogout : () => window.location.href = '/next_rick-n-morty/sign-in'}>
+              <Avatar sx={{ width: 32, height: 32 }}>{user ? 'U' : ''}</Avatar>
             </IconButton>
           </Tooltip>
         </li>
@@ -91,3 +103,4 @@ const Header = () => {
 };
 
 export default Header;
+
