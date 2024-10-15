@@ -1,27 +1,30 @@
 import { getAllEpisodes, getEpisode, getMultipleEpisodes } from "@/api";
+import { ApiInfo, ApiResponse } from "@/types/ApiResponse";
 import { Episode } from "@/types/Episode";
 import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 type stateProps = {
   episodes: Episode[];
+  info: ApiInfo | null;
   hasError: boolean;
   isLoading: boolean;
 };
 
 const initialState: stateProps = {
   episodes: [],
+  info: null,
   hasError: false,
   isLoading: false,
 };
 
 export const fetchAllEpisodes = createAsyncThunk(
   "episodes/fetchAllEpisodes",
-  async (query?: string) => {
+  async (params: { query?: string; noCache?: boolean }) => {
     try {
-      const response = await getAllEpisodes(query);
+      const response = await getAllEpisodes(params.query, params.noCache);
       return response;
     } catch (error) {
-      console.error("Failed to fetch characters:", error);
+      console.error("Failed to fetch episodes:", error);
       throw error;
     }
   }
@@ -55,16 +58,18 @@ const episodeSlice = createSlice({
       })
       .addCase(
         fetchAllEpisodes.fulfilled,
-        (state, action: PayloadAction<Episode[]>) => {
+        (state, action: PayloadAction<ApiResponse<Episode>>) => {
           state.hasError = false;
           state.isLoading = false;
-          state.episodes = action.payload;
+          state.episodes = action.payload.results;
+          state.info = action.payload.info;
         }
       )
       .addCase(fetchAllEpisodes.rejected, (state) => {
         state.hasError = true;
         state.isLoading = false;
         state.episodes = [];
+        state.info = null;
       });
   },
 });

@@ -1,5 +1,5 @@
 import { CharacterCard } from "@/app/components/CharacterCard";
-import { fetchAllCharacters, fetchMultipleCharacters } from "@/app/lib/character/characterSlice";
+import { fetchMultipleCharacters } from "@/app/lib/character/characterSlice";
 import { fetchLocationData } from "@/app/lib/location/locationSlice";
 import store from "@/app/lib/store";
 import { Character } from "@/types/Character";
@@ -9,12 +9,6 @@ import Link from "next/link";
 const LocationPage = async ({ params }: { params: { id: string } }) => {
   const response = await store.dispatch(fetchLocationData(params.id));
   const location: Location = response.payload as Location; 
-
-
-  const charactersResponse = await store.dispatch(fetchAllCharacters());
-  const characters: Character[] = Array.isArray(charactersResponse.payload) ? charactersResponse.payload : []; 
-  console.log(characters);
-
 
   const residentsIds = extractResidentsIds(location.residents);
   const residentsResponse = await store.dispatch(fetchMultipleCharacters(residentsIds as unknown as string[]));
@@ -27,16 +21,6 @@ const LocationPage = async ({ params }: { params: { id: string } }) => {
     });
   }
 
-
-  function filterCharactersByOrigin(characters: Character[], locationName: string): Character[] {
-    console.log("Filtering characters by origin:", locationName);
-    return [...characters].filter(character => {
-      console.log("Character origin:", character.origin.name);
-      return character.origin.name === locationName;
-    });
-  }
-  const filteredCharacters = filterCharactersByOrigin(characters, location.name);
-  console.log("Filtered characters:", filteredCharacters);
   const residentsCount = residents.length;
 
   return (
@@ -47,14 +31,6 @@ const LocationPage = async ({ params }: { params: { id: string } }) => {
         {residents.map((resident: Character) => (
           <li key={resident.id}>
             <Link href={`/characters/${resident.id}`}><CharacterCard character={resident} /></Link>
-          </li>
-        ))}
-      </ul>
-      <h2>Was born here:</h2>
-      <ul>
-        {filteredCharacters.map((character: Character) => (
-          <li key={character.id}>
-            <Link href={`/characters/${character.id}`}>{character.name}</Link>
           </li>
         ))}
       </ul>

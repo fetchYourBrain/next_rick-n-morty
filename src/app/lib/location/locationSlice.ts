@@ -1,27 +1,30 @@
 import { getAllLocations, getLocation } from "@/api";
+import { ApiInfo, ApiResponse } from "@/types/ApiResponse";
 import { Location } from "@/types/Location";
 import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 type stateProps = {
   locations: Location[];
+  info: ApiInfo | null;
   hasError: boolean;
   isLoading: boolean;
 };
 
 const initialState: stateProps = {
   locations: [],
+  info: null,
   hasError: false,
   isLoading: false,
 };
 
 export const fetchAllLocations = createAsyncThunk(
   "locations/fetchAllLocations",
-  async (query?: string) => {
+  async (params: { query?: string; noCache?: boolean }) => {
     try {
-      const response = await getAllLocations(query);
+      const response = await getAllLocations(params.query, params.noCache);
       return response;
     } catch (error) {
-      console.error("Failed to fetch characters:", error);
+      console.error("Failed to fetch locations:", error);
       throw error;
     }
   }
@@ -47,16 +50,18 @@ const locationSlice = createSlice({
       })
       .addCase(
         fetchAllLocations.fulfilled,
-        (state, action: PayloadAction<Location[]>) => {
+        (state, action: PayloadAction<ApiResponse<Location>>) => {
           state.hasError = false;
           state.isLoading = false;
-          state.locations = action.payload;
+          state.locations = action.payload.results;
+          state.info = action.payload.info;
         }
       )
       .addCase(fetchAllLocations.rejected, (state) => {
         state.hasError = true;
         state.isLoading = false;
         state.locations = [];
+        state.info = null;
       });
   },
 });
