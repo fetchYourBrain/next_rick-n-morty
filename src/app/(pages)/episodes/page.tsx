@@ -4,7 +4,7 @@ import store from "@/app/lib/store";
 import { Episode } from "@/types/Episode";
 
 const EpisodesPage = async () => {
-  const response = await store.dispatch(fetchAllEpisodes());
+  const response = await store.dispatch(fetchAllEpisodes('?page=1'));
 
   const episodes: Episode[] = Array.isArray(response.payload)
     ? response.payload

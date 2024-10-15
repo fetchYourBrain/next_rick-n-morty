@@ -4,7 +4,7 @@ import store from "@/app/lib/store";
 import { Location } from "@/types/Location";
 
 const LocationsPage = async () => {
-  const response = await store.dispatch(fetchAllLocations());
+  const response = await store.dispatch(fetchAllLocations('?page=1'));
 
   const locations: Location[] = Array.isArray(response.payload) ? response.payload : []; 
     

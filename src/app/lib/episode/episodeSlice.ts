@@ -16,9 +16,9 @@ const initialState: stateProps = {
 
 export const fetchAllEpisodes = createAsyncThunk(
   "episodes/fetchAllEpisodes",
-  async () => {
+  async (query?: string) => {
     try {
-      const response = await getAllEpisodes();
+      const response = await getAllEpisodes(query);
       return response;
     } catch (error) {
       console.error("Failed to fetch characters:", error);
