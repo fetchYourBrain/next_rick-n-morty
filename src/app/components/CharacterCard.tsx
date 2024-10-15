@@ -1,5 +1,6 @@
 import { Character } from '@/types/Character';
 import Image from 'next/image';
+import Link from 'next/link';
 
 interface CharacterCardProps {
   key?: number;
@@ -21,16 +22,23 @@ export const CharacterCard: React.FC<CharacterCardProps> = ({ character }) => {
     genderLower === 'male' ? 'border-light-btn' : 
     genderLower === 'female' ? 'border-dark-btn' : 'border-ligth-primary';
 
-  return (
-    <article className="relative flex w-full flex-col bg-light-card-bg dark:bg-dark-card-bg cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-[0_0_25px_5px_rgba(106,13,173,0.4)] dark:hover:shadow-[0_0_25px_5px_rgba(0,255,0,0.4)]">
-      <div className="absolute top-[-20px] z-[1] flex h-[40px] w-[40px] self-center bg-[url('/next_rick-n-morty/images/portal.png')] bg-contain bg-center bg-no-repeat">
-        <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-lg font-bold text-white [text-shadow:_-1px_-1px_0_#000,_1px_-1px_0_#000,_-1px_1px_0_#000,_1px_1px_0_#000,_0_-1px_0_#000,_0_1px_0_#000,_-1px_0_0_#000,_1px_0_0_#000]">
-          {id}
-        </span>
-      </div>  
+  const formatNameForURL = (name: string) => {
+    return name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+  }; 
 
-      <div className="flex-grow py-[28px] px-[20px]">
-        <div className="relative group mb-[25px] overflow-hidden">
+  const formattedSlug = formatNameForURL(name);
+
+  return (
+    <Link href={`/characters/${id}?${formattedSlug}`}>
+      <article className="relative flex w-full flex-col bg-light-card-bg dark:bg-dark-card-bg cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-[0_0_25px_5px_rgba(106,13,173,0.4)] dark:hover:shadow-[0_0_25px_5px_rgba(0,255,0,0.4)]">
+        <div className="absolute top-[-20px] z-[1] flex h-[40px] w-[40px] self-center bg-[url('/next_rick-n-morty/images/portal.png')] bg-contain bg-center bg-no-repeat">
+          <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-lg font-bold text-white [text-shadow:_-1px_-1px_0_#000,_1px_-1px_0_#000,_-1px_1px_0_#000,_1px_1px_0_#000,_0_-1px_0_#000,_0_1px_0_#000,_-1px_0_0_#000,_1px_0_0_#000]">
+            {id}
+          </span>
+        </div> 
+
+        <div className="flex-grow py-[28px] px-[20px]">
+          <div className="relative group mb-[25px] overflow-hidden">
             <div className="h-full w-full">
               <Image 
                 src={image} 
@@ -77,17 +85,20 @@ export const CharacterCard: React.FC<CharacterCardProps> = ({ character }) => {
                 />
               </div>             
             )}
+          </div>
+
+          <div className="flex flex-col items-start w-full p-2 text-light-text dark:text-dark-text bg-light-card-alt-bg dark:bg-dark-card-alt-bg border border-dashed border-light-title-text dark:border-dark-title-text min-h-[90px]">
+            <p className="text-[#4d4d4d] dark:text-[#9b9b9b] self-start">
+              Last seen on: 
+            </p>
+            <p className="self-start">
+              {(!location.name || location.name === 'unknown') 
+                  ? "Somewhere in space" 
+                  : location.name}
+            </p>
+          </div>
         </div>
-      
-        <div className="flex flex-col items-start w-full p-2 text-light-text dark:text-dark-text bg-light-card-alt-bg dark:bg-dark-card-alt-bg border border-dashed border-ligth-primary dark:border-dark-primary ">
-          <p className="text-[#4d4d4d] dark:text-[#9b9b9b] self-start">Last seen on: </p>
-          <p className="self-start">
-            {(!location.name || location.name === 'unknown') 
-              ? "Somewhere in space" 
-              : location.name}
-          </p>
-        </div>
-      </div>
-    </article>
+      </article>
+    </Link>
   );
 };
