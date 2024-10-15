@@ -19,7 +19,7 @@ export const CharacterCard: React.FC<CharacterCardProps> = ({ character }) => {
 
   const getBorderColorClass = () =>
     genderLower === 'male' ? 'border-light-btn' : 
-    genderLower === 'female' ? 'border-dark-btn' : 'border-light-title-text';
+    genderLower === 'female' ? 'border-dark-btn' : 'border-ligth-primary';
 
   return (
     <article className="relative flex w-full flex-col bg-light-card-bg dark:bg-dark-card-bg cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-[0_0_25px_5px_rgba(106,13,173,0.4)] dark:hover:shadow-[0_0_25px_5px_rgba(0,255,0,0.4)]">
@@ -79,7 +79,7 @@ export const CharacterCard: React.FC<CharacterCardProps> = ({ character }) => {
             )}
         </div>
       
-        <div className="flex flex-col items-start w-full p-2 text-light-text dark:text-dark-text bg-light-card-alt-bg dark:bg-dark-card-alt-bg border border-dashed border-light-title-text dark:border-dark-title-text ">
+        <div className="flex flex-col items-start w-full p-2 text-light-text dark:text-dark-text bg-light-card-alt-bg dark:bg-dark-card-alt-bg border border-dashed border-ligth-primary dark:border-dark-primary ">
           <p className="text-[#4d4d4d] dark:text-[#9b9b9b] self-start">Last seen on: </p>
           <p className="self-start">
             {(!location.name || location.name === 'unknown') 

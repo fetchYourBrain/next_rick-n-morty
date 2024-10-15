@@ -20,7 +20,7 @@ const useBreadcrumbs = () => {
           <Link
             key={path}
             href={`/${path}`}
-            className="text-3xl text-light-title-text dark:text-dark-title-text font-bold"
+            className="text-3xl text-ligth-primary dark:text-dark-primary font-bold"
           >
             {pathTitle(path)}
           </Link>
