@@ -18,9 +18,9 @@ function get<T>(url: string): Promise<T> {
     .then((data) => data.results ? data.results : data);
 }
 
-export const getAllCharacters = () => get<Character[]>("/character");
-export const getAllEpisodes = () => get<Episode[]>("/episode");
-export const getAllLocations = () => get<Location[]>("/location")
+export const getAllCharacters = (query?: string) => get<Character[]>(`/character${query && `?${query}`}`);
+export const getAllEpisodes = (query?: string) => get<Episode[]>(`/episode${query && `?${query}`}`);
+export const getAllLocations = (query?: string) => get<Location[]>(`/location${query && `?${query}`}`);
 
 export const getEpisode = (id: string) => get<Episode>(`/episode/${id}`);
 export const getLocation = (id: string) => get<Location>(`/location/${id}`);
