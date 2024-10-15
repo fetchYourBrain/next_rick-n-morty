@@ -19,11 +19,11 @@ function get<T>(url: string, noCache = false): Promise<ApiResponse<T>> {
 }
 
 export const getAllCharacters = (query?: string, noCache = false) => 
-  get<Character>(`/character${query ? `?${query}` : ''}`, noCache);
+  get<Character>(`/character${query && `?${query}`}`, noCache);
 export const getAllEpisodes = (query?: string, noCache = false) => 
-  get<Episode>(`/episode${query ? `?${query}` : ''}`, noCache);
+  get<Episode>(`/episode${query && `?${query}`}`, noCache);
 export const getAllLocations = (query?: string, noCache = false) => 
-  get<Location>(`/location${query ? `?${query}` : ''}`, noCache);
+  get<Location>(`/location${query && `?${query}`}`, noCache);
 
 export const getEpisode = (id: string) => get<Episode>(`/episode/${id}`);
 export const getLocation = (id: string) => get<Location>(`/location/${id}`);

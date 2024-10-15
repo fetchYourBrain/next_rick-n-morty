@@ -17,8 +17,8 @@ export const PageJumper: React.FC<PageJumperProps> = ({ info, basePath, currentP
     setInputPage(currentPage.toString());
   }, [currentPage]);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const value = event.target.value;
     if (value === '' || (Number(value) >= 1 && Number(value) <= info.pages)) {
       setInputPage(value);
     }
@@ -32,8 +32,8 @@ export const PageJumper: React.FC<PageJumperProps> = ({ info, basePath, currentP
     return basePath;
   };
 
-  const handleKeyPress = (e: KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'Enter') {
+  const handleKeyPress = (event: KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === 'Enter') {
       const link = document.getElementById('jump-link') as HTMLAnchorElement;
       if (link) link.click();
     }
