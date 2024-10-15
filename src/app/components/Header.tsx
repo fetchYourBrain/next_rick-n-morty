@@ -8,10 +8,10 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { BurgerMenu } from "./BurgerMenu";
 import { NAVIGATION } from "@/types/Navigation";
-import { ThemeButtonToggle } from '@/app/components/ThemeToggle';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '@/app/firebase/config';
 import { signOut } from "firebase/auth";
+import CustomizedSwitches from '@/app/components/CustomizedSwitches';
 
 const Header = () => {
   const [user] = useAuthState(auth);
@@ -81,7 +81,7 @@ const Header = () => {
         </ul>
       </nav>
 
-      <ThemeButtonToggle />
+      <CustomizedSwitches  />
 
       <ul className="flex items-center justify-end flex-1">
         <li>
