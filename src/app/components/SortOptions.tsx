@@ -11,13 +11,14 @@ const SORT_OPTIONS = [
   },
   {
     label: "Alphabetically",
-    value: "alphabetically", // name
+    value: "alphabetically",
   },
   {
     label: "Newest",
-    value: "newest", // createdAt
+    value: "newest",
   },
 ];
+
 const SortOptions = () => {
   const [open, setOpen] = useState(false);
   const [sortType, setSortType] = useState(SORT_OPTIONS[0].label);
@@ -39,7 +40,7 @@ const SortOptions = () => {
           <Tooltip title="You gotta sort it to make sense of the chaos!">
             <span>Sort by:</span>
           </Tooltip>
-          <p className="bg-[#003A6F] py-1 px-3 rounded-sm">{sortType}</p>
+          <p className="bg-[#003A6F] py-1 px-3 rounded-sm text-light-btn dark:text-dark-btn">{sortType}</p>
         </div>
         <div
           className={clsx(

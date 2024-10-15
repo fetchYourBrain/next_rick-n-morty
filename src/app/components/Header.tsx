@@ -72,8 +72,8 @@ const Header = () => {
         <ul className="flex items-center gap-6">
           {NAVIGATION.map((nav) => (
             <li key={nav.name} className={clsx({
-              'text-light-btn dark:text-dark-btn': pathname === nav.href,
-              'text-light-text dark:text-dark-text': pathname !== nav.href
+              'text-light-btn dark:text-dark-btn font-bold': pathname === nav.href, // активний лінк
+              'text-light-text dark:text-dark-text': pathname !== nav.href  // неактивний лінк
             })}>
               <Link href={nav.href}>{nav.name}</Link>
             </li>
@@ -95,6 +95,7 @@ const Header = () => {
             </IconButton>
           </Tooltip>
         </li>
+        <ThemeButtonToggle />
       </ul>
       
       <BurgerMenu isOpen={isOpen} onClose={handleLinkClick} />
