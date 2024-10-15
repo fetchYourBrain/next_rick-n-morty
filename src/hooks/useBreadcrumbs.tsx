@@ -21,9 +21,8 @@ const useBreadcrumbs = () => {
       </Link>,
       ...paths.map((path, index, arr) =>
         index === arr.length - 1 ? (
-          <Tooltip title="God damn it, you already here, Morty!" arrow>
+          <Tooltip title="God damn it, you already here, Morty!" arrow key={path}>
             <Link
-              key={path}
               href={`/${path}`}
               className="text-3xl text-[#9DCE34] font-bold"
             >
