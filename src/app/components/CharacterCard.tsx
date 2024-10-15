@@ -20,7 +20,7 @@ export const CharacterCard: React.FC<CharacterCardProps> = ({ character }) => {
 
   const getBorderColorClass = () =>
     genderLower === 'male' ? 'border-light-btn' : 
-    genderLower === 'female' ? 'border-dark-btn' : 'border-light-title-text';
+    genderLower === 'female' ? 'border-dark-btn' : 'border-ligth-primary';
 
   const formatNameForURL = (name: string) => {
     return name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
@@ -86,7 +86,7 @@ export const CharacterCard: React.FC<CharacterCardProps> = ({ character }) => {
               </div>             
             )}
           </div>
-      
+
           <div className="flex flex-col items-start w-full p-2 text-light-text dark:text-dark-text bg-light-card-alt-bg dark:bg-dark-card-alt-bg border border-dashed border-light-title-text dark:border-dark-title-text min-h-[90px]">
             <p className="text-[#4d4d4d] dark:text-[#9b9b9b] self-start">
               Last seen on: 

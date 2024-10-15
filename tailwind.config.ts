@@ -42,7 +42,7 @@ const config: Config = {
         // КОЛЬОРИ СВІТЛОЇ ТЕМИ
         'light-bg': '#F3F3F3',
         'light-text': '#1c1c1c',
-        'light-title-text': '#6A0DAD',
+        'ligth-primary': '#6A0DAD',
         'light-btn': '#00A7E4',
         'light-divider': '#d8d8d8',
         'light-card-bg': '#ffffff',
@@ -53,7 +53,7 @@ const config: Config = {
         // КОЛЬОРИ ТЕМНОЇ ТЕМИ
         'dark-bg': '#1C1C1C',
         'dark-text': '#F3F3F3',
-        'dark-title-text': '#00FF00',
+        'dark-primary': '#00FF00',
         'dark-btn': '#FB6467',
         'dark-divider': '#2a2a2a',
         'dark-card-bg': '#262626',
