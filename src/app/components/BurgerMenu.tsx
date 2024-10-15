@@ -16,7 +16,7 @@ export const BurgerMenu: React.FC<BurgerMenuProps> = ({ isOpen, onClose }) => {
 
   return (
     isOpen && (
-      <div className="absolute top-20 left-0 w-full bg-[#000000b6] border-[#9DCE34] border-[1px] backdrop-blur-sm border-t-2 border-[#ffffff53] md:hidden">
+      <div className="absolute top-20 left-0 w-full bg-[#3831311a] dark:bg-[#000000b6] border-[1px] backdrop-blur-lg border-t-2 border-[#ffffff53] md:hidden">
         <nav>
           <ul className="flex flex-col items-center py-6">
             {NAVIGATION.map((nav) => (
@@ -25,8 +25,8 @@ export const BurgerMenu: React.FC<BurgerMenuProps> = ({ isOpen, onClose }) => {
                   href={nav.href}
                   onClick={onClose}
                   className={clsx('flex items-center', {
-                    'text-[#9DCE34]': pathname === nav.href,
-                    'text-white': pathname !== nav.href,
+                    'text-light-title-text dark:text-dark-title-text': pathname === nav.href,
+                    'text-black dark:text-white': pathname !== nav.href,
                   })}
                 >
                   {nav.name}

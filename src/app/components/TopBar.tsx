@@ -3,12 +3,17 @@ import { Breadcrumbs } from "@mui/material";
 import useBreadcrumbs from "@/hooks/useBreadcrumbs";
 import { Kode_Mono } from "next/font/google";
 import SearchOptions from "./SearchOptions";
+import { usePathname } from "next/navigation";
 
 const kodeMonoFont = Kode_Mono({ subsets: ["latin"] });
 
 const TopBar = () => {
   const breadcrumbs = useBreadcrumbs();
-  if (breadcrumbs.length === 1) {
+  const pathname = usePathname();
+
+  const hiddenPaths = ["/", "/sign-in", "/sign-up"];
+
+  if (breadcrumbs.length === 1 || hiddenPaths.includes(pathname)) {
     return null;
   }
 
@@ -28,3 +33,4 @@ const TopBar = () => {
 };
 
 export default TopBar;
+

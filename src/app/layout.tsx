@@ -7,7 +7,6 @@ import { Container } from "./components/Container";
 import StoreProvider from "./storeProvider";
 import TopBar from "./components/TopBar";
 import ColorProvider from "./providers/themeProvider";
-import SessionWrapper from "../../components/SessionWrapper";
 
 export const metadata: Metadata = {
   title: "Rick N Morty | Home library",
@@ -22,23 +21,21 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <SessionWrapper>
-      <StoreProvider>
-        <html lang="en">
-          <body className={`${kodeMonoFont.className} antialiased bg-light-bg dark:bg-dark-bg`}>
-            <div className="wrapper">
+    <StoreProvider>
+      <html lang="en">
+        <body className={`${kodeMonoFont.className} antialiased bg-light-bg dark:bg-dark-bg`}>
+          <div className="wrapper">
             <ColorProvider>
-                <Header />
+              <Header />
                 <Container>
                   <TopBar />
                   {children}
                 </Container>
-                <Footer />
+              <Footer />
             </ColorProvider>
-            </div>
-          </body>
-        </html>
-      </StoreProvider>
-    </SessionWrapper>
+          </div>
+        </body>
+      </html>
+    </StoreProvider>
   );
 }
