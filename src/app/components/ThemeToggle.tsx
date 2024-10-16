@@ -14,7 +14,7 @@ export const ThemeButtonToggle = () => {
         {resolvedTheme === "dark" ? (
           <div className="relative w-full h-64 bg-transparent">
             <Image
-              src="/next_rick-n-morty/images/light-logo.webp"
+              src="/images/light-logo.webp"
               alt="Logo"
               width={48}
               height={48}
