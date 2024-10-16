@@ -1,11 +1,5 @@
 import  Image from "next/image";
-
-const TECHSTACK = [
-  "NextJS",
-  "Redux Toolkit",
-  "TailwindCSS",
-  "MaterialUI",
-];
+import { MainButton } from "./components/MainButton";
 
 export default function Home() {
   return (
@@ -24,19 +18,7 @@ export default function Home() {
           responsibility? Eh, who cares, you’re gettin’ it anyway. Just don’t
           turn into a Cronenberg while you’re readin' it, alright?!
         </p>
-        <ul className="flex gap-2 items-center">
-          {TECHSTACK.map((tech, index) => (
-            <>
-              <li
-                key={tech}
-                className="flex items-center gap-2 bg-[#003A6F] p-1 rounded-md text-sm"
-              >
-                {tech}
-              </li>
-              {index < TECHSTACK.length - 1 && <div>/</div>}
-            </>
-          ))}
-        </ul>
+        <MainButton text={'Portal to Git-hubverse'} />
       </section>
       <section className="flex flex-1 justify-center bg-[url('/next_rick-n-morty/images/portal.png')] bg-center bg-contain bg-no-repeat">
         <Image
