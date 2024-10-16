@@ -6,8 +6,17 @@ import { Location } from "@/types/Location";
 import { ApiResponse } from "@/types/ApiResponse";
 import { PayloadAction } from "@reduxjs/toolkit";
 import { PageJumper } from "@/app/components/PageJumper";
+import { Metadata } from "next";
+import { createMetaData } from "@/helpers/metadata";
 
 export const dynamic = 'force-dynamic';
+
+export const metadata: Metadata = createMetaData({
+  title: "Locations",
+  description:
+    "Discover the diverse and bizarre locations from across the multiverse of Rick and Morty. From Earth to distant dimensions—explore every corner!",
+  url: "/locations",
+});
 
 const LocationsPage = async ({ searchParams }: { searchParams: { page?: string } }) => {
   const currentPage = Number(searchParams.page) || 1;

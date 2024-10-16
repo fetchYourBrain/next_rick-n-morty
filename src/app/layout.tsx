@@ -7,11 +7,13 @@ import { Container } from "./components/Container";
 import StoreProvider from "./storeProvider";
 import TopBar from "./components/TopBar";
 import ColorProvider from "./providers/themeProvider";
+import { createMetaData } from "@/helpers/metadata";
 
-export const metadata: Metadata = {
-  title: "Rick N Morty | Home library",
+export const metadata: Metadata = createMetaData({
+  title: "Home library",
   description: "Welcome to library of Rick N Morty cartoon.",
-};
+  url: '/',
+})
 
 const kodeMonoFont = Kode_Mono({ subsets: ["latin"], display: "swap" });
 
