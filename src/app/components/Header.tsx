@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { Avatar, IconButton, Tooltip } from "@mui/material";
 import clsx from "clsx";
@@ -25,33 +25,42 @@ const Header = () => {
 
   const handleLogout = async () => {
     await signOut(auth);
-    sessionStorage.removeItem('user');
+    sessionStorage.removeItem("user");
   };
 
   return (
-    <header className="bg-light-bg dark:bg-dark-bg h-16 flex items-center px-4 py-10 md:px-10 sticky top-0 mb-8 border-b-2 border-light-divider dark:border-dark-divider z-[2]">
+    <header className="bg-light-bg dark:bg-dark-bg h-16 flex items-center px-4 py-10 md:px-10 sticky top-0 border-b-2 border-light-divider dark:border-dark-divider z-[2]">
       <div className="flex-1 flex items-center md:hidden">
         <button
           className="flex flex-col h-8 w-8 border-2 border-[#1d1b1b53] dark:border-[#ffffff80] rounded justify-center items-center group"
           onClick={() => setIsOpen(!isOpen)}
         >
           <div
-            className={clsx(genericHamburgerLine, {
-              "bg-[#1d1b1b53] dark:bg-[#ffffff9f] rotate-45 translate-y-1.5 opacity-50 group-hover:opacity-100": isOpen,
-              "bg-[#1d1b1b53] dark:bg-[#ffffff9f] opacity-50 group-hover:opacity-100": !isOpen,
-            })}
+            className={clsx(
+              genericHamburgerLine,
+              "bg-[#BDBDBD] dark:bg-[#ffffff9f]",
+              {
+                "rotate-45 translate-y-1.5": isOpen,
+              }
+            )}
           />
           <div
-            className={clsx(genericHamburgerLine, {
-              "bg-[#1d1b1b53] dark:bg-[#ffffff9f] opacity-0": isOpen,
-              "bg-[#1d1b1b53] dark:bg-[#ffffff9f] opacity-50 group-hover:opacity-100": !isOpen,
-            })}
+            className={clsx(
+              genericHamburgerLine,
+              "bg-[#BDBDBD] dark:bg-[#ffffff9f]",
+              {
+                "opacity-0": isOpen,
+              }
+            )}
           />
           <div
-            className={clsx(genericHamburgerLine, {
-              "bg-[#1d1b1b53] dark:bg-[#ffffff9f] -rotate-45 -translate-y-1.5 opacity-50 group-hover:opacity-100": isOpen,
-              "bg-[#1d1b1b53] dark:bg-[#ffffff9f] opacity-50 group-hover:opacity-100": !isOpen,
-            })}
+            className={clsx(
+              genericHamburgerLine,
+              "bg-[#BDBDBD] dark:bg-[#ffffff9f]",
+              {
+                "-rotate-45 -translate-y-1.5": isOpen,
+              }
+            )}
           />
         </button>
       </div>
@@ -71,10 +80,14 @@ const Header = () => {
       <nav className="hidden md:flex mx-auto flex-1 justify-center">
         <ul className="flex items-center gap-6">
           {NAVIGATION.map((nav) => (
-            <li key={nav.name} className={clsx({
-              'text-light-btn dark:text-dark-btn font-bold': pathname === nav.href, // активний лінк
-              'text-light-text dark:text-dark-text': pathname !== nav.href  // неактивний лінк
-            })}>
+            <li
+              key={nav.name}
+              className={clsx({
+                "text-light-primary dark:text-dark-primary font-bold":
+                  pathname === nav.href, // активний лінк
+                "text-light-text dark:text-dark-text": pathname !== nav.href,
+              })}
+            >
               <Link href={nav.href}>{nav.name}</Link>
             </li>
           ))}
@@ -84,24 +97,25 @@ const Header = () => {
       <CustomizedSwitches  />
 
       <ul className="flex items-center justify-end flex-1">
-        <li>
-          <Tooltip title={user ? "Logout" : "Login"}>
-            <IconButton
-              size="small"
-              sx={{ ml: 2 }}
-              aria-haspopup="true"
-              onClick={user ? handleLogout : () => window.location.href = '/next_rick-n-morty/sign-in'}>
-              <Avatar sx={{ width: 32, height: 32 }}>{user ? 'U' : ''}</Avatar>
-            </IconButton>
-          </Tooltip>
-        </li>
-        <ThemeButtonToggle />
+        {user ? (
+          <div onClick={handleLogout}>Log out</div>
+        ) : (
+          <li>
+            <Link href="/sign-in">
+              <Tooltip title={user ? "Logout" : "Login"}>
+                <IconButton size="small" sx={{ ml: 2 }} aria-haspopup="true">
+                  <Avatar sx={{ width: 32, height: 32 }}>
+                  </Avatar>
+                </IconButton>
+              </Tooltip>
+            </Link>
+          </li>
+        )}
       </ul>
-      
+
       <BurgerMenu isOpen={isOpen} onClose={handleLinkClick} />
     </header>
   );
 };
 
 export default Header;
-

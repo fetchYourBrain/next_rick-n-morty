@@ -24,7 +24,7 @@ const useBreadcrumbs = () => {
           <Tooltip title="God damn it, you already here, Morty!" arrow key={path}>
             <Link
               href={`/${path}`}
-              className="text-3xl text-[#9DCE34] font-bold"
+              className="text-3xl text-light-primary dark:text-dark-primary font-bold"
             >
               {pathTitle(path)}
             </Link>
@@ -36,8 +36,8 @@ const useBreadcrumbs = () => {
         )
       ),
     ];
-  }, [pathname]); // Залежність - pathname
-
+  }, [pathname]);
+  
   return breadcrumbs;
 };
 

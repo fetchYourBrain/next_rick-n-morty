@@ -40,11 +40,11 @@ const SortOptions = () => {
           <Tooltip title="You gotta sort it to make sense of the chaos!">
             <span>Sort by:</span>
           </Tooltip>
-          <p className="bg-[#003A6F] py-1 px-3 rounded-sm text-light-btn dark:text-dark-btn">{sortType}</p>
+          <p className="bg-light-card-alt-bg dark:bg-dark-card-alt-bg py-1 px-3 rounded-sm text-light-primary dark:text-dark-primary">{sortType}</p>
         </div>
         <div
           className={clsx(
-            `absolute top-10 z-[3] bg-[#000000b6] border-[#9DCE34] border-[1px] backdrop-blur-sm`,
+            `absolute top-20 left-[-8px] z-[3] bg-light-card-bg dark:bg-dark-card-bg border-light-primary dark:border-dark-primary border-[1px] backdrop-blur-sm`,
             { hidden: !open }
           )}
         >
@@ -53,7 +53,7 @@ const SortOptions = () => {
               <li
                 key={option.label}
                 onClick={() => handleSelectOption(option.label)}
-                className="py-3 px-4 hover:text-[#9DCE34] hover:bg-[#13b0c88b] cursor-pointer transition-colors ease-in-out"
+                className="py-3 px-4 hover:text-light-primary dark:hover:text-dark-primary hover:bg-light-card-alt-bg dark:hover:bg-dark-card-alt-bg cursor-pointer transition-colors ease-in-out"
               >
                 {option.label}
               </li>

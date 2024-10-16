@@ -5,8 +5,9 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import { Container } from "./components/Container";
 import StoreProvider from "./storeProvider";
-import TopBar from "./components/TopBar";
 import ColorProvider from "./providers/themeProvider";
+import { Suspense } from "react";
+import Loading from "./loading";
 
 export const metadata: Metadata = {
   title: "Rick N Morty | Home library",
@@ -23,15 +24,16 @@ export default function RootLayout({
   return (
     <StoreProvider>
       <html lang="en">
-        <body className={`${kodeMonoFont.className} antialiased bg-light-bg dark:bg-dark-bg`}>
+        <body
+          className={`${kodeMonoFont.className} antialiased bg-light-bg dark:bg-dark-bg cursor-custom-default `}
+        >
           <div className="wrapper">
             <ColorProvider>
-              <Header />
-                <Container>
-                  <TopBar />
-                  {children}
-                </Container>
-              <Footer />
+              <Suspense fallback={<Loading />}>
+                <Header />
+                <Container>{children}</Container>
+                <Footer />
+              </Suspense>
             </ColorProvider>
           </div>
         </body>

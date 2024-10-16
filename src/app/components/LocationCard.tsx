@@ -17,19 +17,19 @@ export const LocationCard: React.FC<LocationCardProps> = ({ location }) => {
 
   return (
     <Link href={`/locations/${id}?${formattedSlug}`}>
-      <article className="w-full hover:bg-[#363A3A] text-white hover:text-[#39FF14] p-2">
-        <div className="grid grid-cols-[45%_25%_30%]">
+      <article className="w-full bg-[#ffffff] dark:bg-[#262626] light-text hover:font-bold hover:text-light-primary dark:hover:text-dark-primary transition-[font] ease-in p-2">
+        <div className="flex flex-col md:grid md:grid-cols-[45%_25%_30%]">
           <div className="flex items-center gap-2">
               <p>{id}.</p>
-              <p>{name}</p>
+              <p><span className="md:hidden inline">Name:</span> {name}</p>
           </div>
 
-          <div className="flex items-center justify-start"> 
-              <p>{type}</p>
+          <div className=""> 
+              <p><span className="md:hidden inline">Type:</span> {type}</p>
           </div>
 
-          <div className="flex items-center justify-end">
-              <p>{dimension === 'unknown' ? 'Unknown Dimension' : dimension}</p>
+          <div className="flex items-center md:justify-end">
+              <p><span className="md:hidden inline">Dimension:</span> {dimension === 'unknown' ? 'Unknown Dimension' : dimension}</p>
           </div>
         </div>
       </article>

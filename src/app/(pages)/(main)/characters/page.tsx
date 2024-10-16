@@ -5,7 +5,6 @@ import store from "@/app/lib/store";
 import { Character } from "@/types/Character";
 import { ApiResponse } from "@/types/ApiResponse";
 import { PayloadAction } from "@reduxjs/toolkit";
-import { PageJumper } from "@/app/components/PageJumper";
 
 export const dynamic = 'force-dynamic';
 
@@ -21,7 +20,6 @@ const CharactersPage = async ({ searchParams }: { searchParams: { page?: string 
 
   return (
     <div>
-      <PageJumper info={info} currentPage={currentPage} basePath="/characters" />
       <CharacterList characters={characters} />
       <Pagination info={info} currentPage={currentPage} basePath="/characters" />
     </div>

@@ -27,7 +27,7 @@ export default function Footer() {
               <li key={link.text}>
                 <Link
                   href={link.href}
-                  className="hover:text-light-btn dark:hover:text-dark-btn me-4 md:me-6"
+                  className="hover:text-light-primary dark:hover:text-dark-primary me-4 md:me-6"
                 >
                   {link.text}
                 </Link>
