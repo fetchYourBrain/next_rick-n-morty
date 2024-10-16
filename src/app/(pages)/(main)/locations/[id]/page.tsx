@@ -1,7 +1,7 @@
-import { CharacterCard } from "@/app/components/CharacterCard";
 import { fetchMultipleCharacters } from "@/app/lib/character/characterSlice";
 import { fetchLocationData } from "@/app/lib/location/locationSlice";
 import store from "@/app/lib/store";
+import { CharacterCard } from "@/components/CharacterCard";
 import { Character } from "@/types/Character";
 import { Location } from "@/types/Location";
 import Link from "next/link";

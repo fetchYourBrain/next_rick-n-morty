@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import TopBar from "@/app/components/TopBar";
-
+import TopBar from "@/components/TopBar";
 
 export const metadata: Metadata = {
   title: "Rick N Morty | Home library",

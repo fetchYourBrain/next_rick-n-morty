@@ -8,10 +8,10 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { BurgerMenu } from "./BurgerMenu";
 import { NAVIGATION } from "@/types/Navigation";
-import { useAuthState } from 'react-firebase-hooks/auth';
-import { auth } from '@/app/firebase/config';
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "@/app/firebase/config";
 import { signOut } from "firebase/auth";
-import CustomizedSwitches from '@/app/components/CustomizedSwitches';
+import CustomizedSwitches from "./CustomizedSwitches";
 
 const Header = () => {
   const [user] = useAuthState(auth);
@@ -38,7 +38,7 @@ const Header = () => {
           <div
             className={clsx(
               genericHamburgerLine,
-              "bg-[#BDBDBD] dark:bg-[#ffffff9f]",
+              "bg-[#767474]",
               {
                 "rotate-45 translate-y-1.5": isOpen,
               }
@@ -47,7 +47,7 @@ const Header = () => {
           <div
             className={clsx(
               genericHamburgerLine,
-              "bg-[#BDBDBD] dark:bg-[#ffffff9f]",
+              "bg-[#767474]",
               {
                 "opacity-0": isOpen,
               }
@@ -56,7 +56,7 @@ const Header = () => {
           <div
             className={clsx(
               genericHamburgerLine,
-              "bg-[#BDBDBD] dark:bg-[#ffffff9f]",
+              "bg-[#767474]",
               {
                 "-rotate-45 -translate-y-1.5": isOpen,
               }
@@ -94,9 +94,7 @@ const Header = () => {
         </ul>
       </nav>
 
-      <CustomizedSwitches  />
-
-      <ul className="flex items-center justify-end flex-1">
+      <ul className="flex items-center justify-end flex-1 gap-2">
         {user ? (
           <div onClick={handleLogout}>Log out</div>
         ) : (
@@ -104,13 +102,15 @@ const Header = () => {
             <Link href="/sign-in">
               <Tooltip title={user ? "Logout" : "Login"}>
                 <IconButton size="small" sx={{ ml: 2 }} aria-haspopup="true">
-                  <Avatar sx={{ width: 32, height: 32 }}>
-                  </Avatar>
+                  <Avatar sx={{ width: 32, height: 32 }}></Avatar>
                 </IconButton>
               </Tooltip>
             </Link>
           </li>
         )}
+        <li>
+          <CustomizedSwitches />
+        </li>
       </ul>
 
       <BurgerMenu isOpen={isOpen} onClose={handleLinkClick} />

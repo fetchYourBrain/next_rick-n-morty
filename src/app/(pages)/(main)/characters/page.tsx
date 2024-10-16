@@ -1,10 +1,10 @@
 import { fetchAllCharacters } from "@/app/lib/character/characterSlice";
-import { CharacterList } from "@/app/components/CharacterList"; 
-import { Pagination } from "@/app/components/Pagination";
 import store from "@/app/lib/store";
 import { Character } from "@/types/Character";
 import { ApiResponse } from "@/types/ApiResponse";
 import { PayloadAction } from "@reduxjs/toolkit";
+import { CharacterList } from "@/components/CharacterList";
+import { Pagination } from "@/components/Pagination";
 
 export const dynamic = 'force-dynamic';
 

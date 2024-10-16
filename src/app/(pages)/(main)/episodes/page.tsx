@@ -1,10 +1,10 @@
 import { fetchAllEpisodes } from "@/app/lib/episode/episodeSlice";
-import { EpisodeList } from "@/app/components/EpisodeList";
-import { Pagination } from "@/app/components/Pagination";
 import store from "@/app/lib/store";
 import { Episode } from "@/types/Episode";
 import { ApiResponse } from "@/types/ApiResponse";
 import { PayloadAction } from "@reduxjs/toolkit";
+import { EpisodeList } from "@/components/EpisodeList";
+import { Pagination } from "@/components/Pagination";
 
 export const dynamic = 'force-dynamic';
 

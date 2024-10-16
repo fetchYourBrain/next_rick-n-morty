@@ -1,11 +1,11 @@
-import { fetchAllLocations } from "@/app/lib/location/locationSlice";
-import { LocationList } from "@/app/components/LocationList"; 
-import { Pagination } from "@/app/components/Pagination";
+
 import store from "@/app/lib/store";
 import { Location } from "@/types/Location";
 import { ApiResponse } from "@/types/ApiResponse";
 import { PayloadAction } from "@reduxjs/toolkit";
-import { PageJumper } from "@/app/components/PageJumper";
+import { Pagination } from "@/components/Pagination";
+import { LocationList } from "@/components/LocationList";
+import { fetchAllLocations } from "@/app/lib/location/locationSlice";
 
 export const dynamic = 'force-dynamic';
 
