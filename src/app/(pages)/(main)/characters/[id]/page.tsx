@@ -28,7 +28,6 @@ const CharacterPage = async ({ params }: { params: { id: string } }) => {
     ? episodesResponse.payload
     : [episodesResponse.payload]; 
 
-
   const { image, name, status, species, gender, origin, location } = character;
 
   const originLink = origin.name !== 'unknown' ? (
