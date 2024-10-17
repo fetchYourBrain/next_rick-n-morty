@@ -23,3 +23,10 @@ body {
 * {
   box-sizing: border-box;
 }
+a{
+  cursor: url(/next_rick-n-morty/cursors/pointer.png), pointer;
+}
+
+.cursor-pointer{
+  cursor: url(/next_rick-n-morty/cursors/pointer.png), pointer;
+}
