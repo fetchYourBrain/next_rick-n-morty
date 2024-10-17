@@ -10,7 +10,6 @@ interface LocationCardProps {
 export const LocationCard: React.FC<LocationCardProps> = ({ location }) => {
   const {id, name, type, dimension } = location;  
 
-
   const formattedSlug = createSlug(name);
 
   return (
