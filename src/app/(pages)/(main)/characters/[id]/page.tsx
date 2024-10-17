@@ -1,7 +1,7 @@
-import { EpisodeCard } from "@/app/components/EpisodeCard";
 import { fetchCharacterData } from "@/app/lib/character/characterSlice";
 import { fetchMultipleEpisodes } from "@/app/lib/episode/episodeSlice";
 import store from "@/app/lib/store";
+import { EpisodeCard } from "@/components/EpisodeCard";
 import { Character } from "@/types/Character";
 import { Episode } from "@/types/Episode";
 import Link from "next/link";

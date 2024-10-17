@@ -31,7 +31,7 @@ const SignIn = () => {
   return (
     <div className="flex items-center justify-center pt-16 bg-gray-100 dark:bg-dark-bg">
       <div className="bg-light-card-bg dark:bg-dark-card-bg p-4 md:p-8 rounded-lg shadow-lg w-full max-w-md">
-        <h2 className="text-2xl text-center font-bold mb-4 text-light-title-text dark:text-dark-title-text">
+        <h2 className="text-2xl text-center font-bold mb-4 text-light-primary dark:text-dark-primary">
           Sign In for Rick and Morty Adventures
         </h2>
         <form className="space-y-4" onSubmit={handleSignIn}>
@@ -69,14 +69,14 @@ const SignIn = () => {
           </div>
           <button
             type="submit"
-            className="w-full bg-light-btn dark:bg-dark-btn text-white py-3 rounded-lg hover:bg-blue-500 dark:hover:bg-red-500 transition-colors"
+            className="w-full bg-light-primary dark:bg-dark-btn text-white py-3 rounded-lg hover:bg-blue-500 dark:hover:bg-red-500 transition-colors"
           >
             Sign In
           </button>
           <h3 className="text-center">
             Don`t have an account?{' '}
             <Link href="/sign-up">
-              <span className="text-light-title-text dark:text-dark-title-text underline cursor-pointer">Sign up</span>
+              <span className="text-light-primary dark:text-dark-title-text underline cursor-pointer">Sign up</span>
             </Link>
           </h3>
         </form>
