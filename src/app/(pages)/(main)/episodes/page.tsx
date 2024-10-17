@@ -5,8 +5,18 @@ import { ApiResponse } from "@/types/ApiResponse";
 import { PayloadAction } from "@reduxjs/toolkit";
 import { EpisodeList } from "@/components/EpisodeList";
 import { Pagination } from "@/components/Pagination";
+import { createMetaData } from "@/helpers/metadata";
+import { Metadata } from "next";
 
 export const dynamic = 'force-dynamic';
+
+export const metadata: Metadata = createMetaData({
+  title: "Episodes",
+  description:
+    "Dive into the hilarious and unpredictable episodes of Rick and Morty. Discover your favorites!",
+  url: "/episodes",
+});
+
 
 const EpisodesPage = async ({ searchParams }: { searchParams: { page?: string } }) => {
   const currentPage = Number(searchParams.page) || 1;

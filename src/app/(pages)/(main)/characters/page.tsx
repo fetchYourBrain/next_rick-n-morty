@@ -5,8 +5,17 @@ import { ApiResponse } from "@/types/ApiResponse";
 import { PayloadAction } from "@reduxjs/toolkit";
 import { CharacterList } from "@/components/CharacterList";
 import { Pagination } from "@/components/Pagination";
+import { Metadata } from "next";
+import { createMetaData } from "@/helpers/metadata";
 
 export const dynamic = 'force-dynamic';
+
+export const metadata: Metadata = createMetaData({
+  title: "Characters",
+  description:
+    "Explore the wild and wacky multiverse of Rick and Morty through its iconic characters. Get to know your favorite heroes, villains, and creatures!",
+  url: "/characters",
+});
 
 const CharactersPage = async ({ searchParams }: { searchParams: { page?: string } }) => {
   const currentPage = Number(searchParams.page) || 1;
