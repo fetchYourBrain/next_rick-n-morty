@@ -44,32 +44,47 @@ const CharacterPage = async ({ params }: { params: { id: string } }) => {
 
   return (
     <div>
-      <div className="bg-light-card-bg dark:bg-dark-card-bg mb-4 flex flex-col gap-2 p-4 border-b-2 border-light-divider dark:border-dark-divider font-bold ">
-        <h2 className="text-light-primary dark:text-dark-primary text-3xl">{name}</h2>
+      <div className=" bg-light-card-bg dark:bg-dark-card-bg mb-4 flex flex-col gap-2 p-4 border-b-2 border-light-divider dark:border-dark-divider font-bold ">
+        <h2 className="self-center text-light-primary dark:text-dark-primary text-3xl">{name}</h2>
 
-        <div className="flex flex-col gap-2 md:flex-row">
-          <div className="mb-2 md:mb-0 md:mr-2">
+        <div className="flex flex-col sm:flex-row">
+          <div className="self-center">
             <Image 
               src={image}
               alt={name} 
               width={250} 
               height={250}
-              className="pb-4 border-b-2 md:pb-0 md:border-b-0 md:pr-4 md:border-r-2 border-light-divider dark:border-dark-divider"
             />
           </div>
 
-          <div className="flex flex-col gap-2 justify-between">
-            <p><span className="font-normal">Status:</span> {status}</p> 
+          <div className="flex flex-col gap-2 justify-between w-full pt-4 mt-4 sm:mt-0 sm:ml-4 border-t-2 sm:pt-0 sm:border-t-0 sm:pl-4 sm:border-l-2 border-light-primary dark:border-dark-primary">
+            <div className="flex flex-row justify-between">
+              <p className="font-normal">Status: </p> 
+              <p>{status}</p>
+            </div>
 
-            <p><span className="font-normal">Species:</span> {species}</p>
+            <div className="flex flex-row justify-between">
+              <p className="font-normal">Species: </p> 
+              <p>{species}</p>
+            </div>
 
-            <p><span className="font-normal">Gender:</span> {gender}</p>
+            <div className="flex flex-row justify-between">
+              <p className="font-normal">Gender: </p> 
+              <p>{gender}</p>
+            </div>
 
-            <p><span className="font-normal">Origin:</span> {originLink}</p>
+            <div className="flex flex-row justify-between">
+              <p className="font-normal">Origin: </p> 
+              <p>{originLink}</p>
+            </div>
 
-            <p><span className="font-normal">Location:</span> {locationLink}</p>
 
-            <p className="font-medium">Was in {episodes.length} {episodes.length === 1 ? 'episode' : 'episodes'}</p>
+            <div className="flex flex-row justify-between">
+              <p className="font-normal">Location: </p> 
+              <p>{locationLink}</p>
+            </div>
+
+            <p className="font-medium text-center sm:text-right">Was in {episodes.length} {episodes.length === 1 ? 'episode' : 'episodes'}</p>
           </div>
         </div>
       </div>
