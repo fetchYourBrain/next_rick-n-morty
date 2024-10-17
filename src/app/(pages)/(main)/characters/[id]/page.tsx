@@ -7,6 +7,15 @@ import { Episode } from "@/types/Episode";
 import { extractIds } from "@/utils/idExtractor";
 import Link from "next/link";
 import Image from 'next/image';
+import { getAllCharacters } from "@/api";
+
+export async function generateStaticParams() {
+  const characters = await getAllCharacters();
+
+  return characters.results?.map(character => ({
+    id: character.id.toString(),
+  })) || [];
+}
 
 const CharacterPage = async ({ params }: { params: { id: string } }) => {
   const response = await store.dispatch(fetchCharacterData(params.id));

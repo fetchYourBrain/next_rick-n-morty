@@ -5,6 +5,15 @@ import { CharacterCard } from "@/components/CharacterCard";
 import { Character } from "@/types/Character";
 import { Location } from "@/types/Location";
 import { extractIds } from "@/utils/idExtractor";
+import { getAllLocations } from "@/api";
+
+export async function generateStaticParams() {
+  const locations = await getAllLocations();
+
+  return locations.results?.map(location => ({
+    id: location.id.toString(),
+  })) || [];
+}
 
 const LocationPage = async ({ params }: { params: { id: string } }) => {
   const response = await store.dispatch(fetchLocationData(params.id));

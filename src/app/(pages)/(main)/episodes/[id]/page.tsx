@@ -1,3 +1,4 @@
+import { getAllEpisodes } from "@/api";
 import { fetchMultipleCharacters } from "@/app/lib/character/characterSlice";
 import { fetchEpisodeData } from "@/app/lib/episode/episodeSlice";
 import store from "@/app/lib/store";
@@ -6,6 +7,14 @@ import { Character } from "@/types/Character";
 import { Episode } from "@/types/Episode";
 import { extractIds } from "@/utils/idExtractor";
 import Link from "next/link";
+
+export async function generateStaticParams() {
+  const episodes = await getAllEpisodes();
+
+  return episodes.results?.map(episode => ({
+    id: episode.id.toString(),
+  })) || [];
+}
 
 const EpisodePage = async ({ params }: { params: { id: string } }) => {
   const response = await store.dispatch(fetchEpisodeData(params.id));
