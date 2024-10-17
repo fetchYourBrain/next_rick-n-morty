@@ -1,4 +1,5 @@
 import { Episode } from "@/types/Episode";
+import { createSlug } from "@/utils/createSlug";
 import Link from "next/link";
 
 interface EpisodeCardProps {
@@ -9,12 +10,6 @@ interface EpisodeCardProps {
 export const EpisodeCard: React.FC<EpisodeCardProps> = ({ episodeInfo }) => {
   const { id, name, air_date, episode } = episodeInfo;
 
-  const formatNameForURL = (name: string) => {
-    return name
-      .toLowerCase()
-      .replace(/\s+/g, "-")
-      .replace(/[^a-z0-9-]/g, "");
-  };
 
   const formatEpisodeSlug = (episode: string) => {
     const seasonStr = episode.substring(1, 3);
@@ -23,7 +18,7 @@ export const EpisodeCard: React.FC<EpisodeCardProps> = ({ episodeInfo }) => {
     return `season-${seasonStr}-episode-${episodeStr}`;
   };
 
-  const formattedSlug = formatNameForURL(name);
+  const formattedSlug = createSlug(name);
   const episodeSlug = formatEpisodeSlug(episode);
 
   return (

@@ -1,4 +1,5 @@
 import { Location } from '@/types/Location';
+import { createSlug } from '@/utils/createSlug';
 import Link from 'next/link';
 
 interface LocationCardProps {
@@ -9,11 +10,7 @@ interface LocationCardProps {
 export const LocationCard: React.FC<LocationCardProps> = ({ location }) => {
   const {id, name, type, dimension } = location;  
 
-  const formatNameForUrl = (name: string) => {
-    return name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
-  };
-
-  const formattedSlug = formatNameForUrl(name);
+  const formattedSlug = createSlug(name);
 
   return (
     <Link href={`/locations/${id}?${formattedSlug}`}>

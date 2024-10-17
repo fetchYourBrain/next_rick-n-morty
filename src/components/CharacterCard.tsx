@@ -1,4 +1,5 @@
 import { Character } from '@/types/Character';
+import { createSlug } from '@/utils/createSlug';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -22,11 +23,7 @@ export const CharacterCard: React.FC<CharacterCardProps> = ({ character }) => {
     genderLower === 'male' ? 'border-light-primary' : 
     genderLower === 'female' ? 'border-dark-btn' : 'border-light-primary';
 
-  const formatNameForURL = (name: string) => {
-    return name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
-  }; 
-
-  const formattedSlug = formatNameForURL(name);
+  const formattedSlug = createSlug(name);
 
   return (
     <Link href={`/characters/${id}?${formattedSlug}`}>
@@ -56,16 +53,8 @@ export const CharacterCard: React.FC<CharacterCardProps> = ({ character }) => {
             <div className="absolute bottom-3 right-0 transition-transform duration-300 group-hover:translate-x-full">
               <div className={`inline-block bg-[#363A3A] border-b-8 ${getBorderColorClass()}`}>
                 <div className="flex flex-col gap-1 p-2 text-white">
-                  <h3 className="text-right text-base font-bold whitespace-nowrap">{name}</h3>
-                  <div className="flex items-center justify-end gap-1">
-                    <Image 
-                      src="/next_rick-n-morty/images//alien.svg" 
-                      alt="alien" 
-                      width={15}
-                      height={15}
-                    />
-                    <p>{species}</p>
-                  </div>
+                  <h3 className="text-right text-base font-bold">{name}</h3>
+                  <p className="text-right">{species}</p>
                 </div>
               </div>
             </div>
@@ -87,7 +76,7 @@ export const CharacterCard: React.FC<CharacterCardProps> = ({ character }) => {
             )}
           </div>
 
-          <div className="flex flex-col items-start w-full p-2 text-light-text dark:text-dark-text bg-light-card-alt-bg dark:bg-dark-card-alt-bg border border-dashed border-light-title-text dark:border-dark-title-text min-h-[90px]">
+          <div className="flex flex-col items-start w-full p-2 text-light-text dark:text-dark-text bg-light-card-alt-bg dark:bg-dark-card-alt-bg border border-dashed border-light-title-text dark:border-dark-title-text min-h-[120px]">
             <p className="text-[#4d4d4d] dark:text-[#9b9b9b] self-start font-bold">
               Last seen on: 
             </p>
