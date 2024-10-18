@@ -17,14 +17,14 @@ export function get<T>(url: string): Promise<T> {
   return fetch(fullURL, { cache: 'no-store' }).then((res) => res.json());
 }
 
-export const getAllCharacters = (query = '') => 
-  get<ApiResponse<Character>>(`/character${query}`);  
+export const getAllCharacters = (page: number = 1) => 
+  get<ApiResponse<Character>>(`/character?page=${page}`);  
 
-export const getAllEpisodes = (query='') => 
-  get<ApiResponse<Episode>>(`/episode${query}`);
+export const getAllEpisodes = (page: number = 1) => 
+  get<ApiResponse<Episode>>(`/episode?page=${page}`);
 
-export const getAllLocations = (query='') => 
-  get<ApiResponse<Location>>(`/location${query}`);
+export const getAllLocations = (page: number = 1) => 
+  get<ApiResponse<Location>>(`/location?page=${page}`);
 
 export const getEpisode = (id: string) => get<Episode>(`/episode/${id}`);
 
