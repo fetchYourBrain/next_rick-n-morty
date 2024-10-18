@@ -2,16 +2,16 @@ import { initializeApp, getApps, getApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
-  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
-  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
-  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGIN_SENDER_ID,
-  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+  apiKey: "AIzaSyBm6djlCzUgd3MMRTCK-iGtXrb7LsRGZIA",
+  authDomain: "rick-and-morty-auth-1fc80.firebaseapp.com",
+  projectId: "rick-and-morty-auth-1fc80",
+  storageBucket: "rick-and-morty-auth-1fc80.appspot.com",
+  messagingSenderId: "870679977411",
+  appId: "1:870679977411:web:58e1ec2e6f55c1ef0ab176",
 };
 
 const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
 
 const auth = getAuth(app);
 
-export {app, auth};
+export { app, auth };
