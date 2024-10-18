@@ -4,7 +4,6 @@ import { extractIds } from "@/helpers/extractId";
 import { Character } from "@/types/Character";
 import { Episode } from "@/types/Episode";
 import Link from "next/link";
-import Image from 'next/image';
 import { getAllCharacters } from "@/api";
 
 export async function generateStaticParams() {

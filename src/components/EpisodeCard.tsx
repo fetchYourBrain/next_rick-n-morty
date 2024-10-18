@@ -10,12 +10,6 @@ interface EpisodeCardProps {
 export const EpisodeCard: React.FC<EpisodeCardProps> = ({ episodeInfo }) => {
   const { id, name, air_date, episode } = episodeInfo;
 
-  const formatNameForURL = (name: string) => {
-    return name?.toLowerCase()
-      .replace(/\s+/g, "-")
-      .replace(/[^a-z0-9-]/g, "");
-  };
-
   const formatEpisodeSlug = (episode: string) => {
     const seasonStr = episode?.substring(1, 3);
     const episodeStr = episode?.substring(4, 6);

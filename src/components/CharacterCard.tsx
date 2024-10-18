@@ -1,5 +1,4 @@
 import { Character } from '@/types/Character';
-import { createSlug } from '@/helpers/createSlug';
 import Image from 'next/image';
 import Link from 'next/link';
 
