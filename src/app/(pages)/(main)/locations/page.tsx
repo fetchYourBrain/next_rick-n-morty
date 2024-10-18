@@ -37,5 +37,14 @@ const LocationsPage = async ({ searchParams }: { searchParams: { page?: string }
     </div>
   );
 };
+
+export async function generateStaticParams() {
+  const characters = await getAllLocations();
+  const totalPages = Math.ceil(characters.info.count);
+  
+  return Array.from({ length: totalPages }, (_, index) => ({
+    page: (index + 1).toString(),
+  }));
+}
   
 export default LocationsPage;
