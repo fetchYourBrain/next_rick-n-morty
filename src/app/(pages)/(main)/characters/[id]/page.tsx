@@ -1,8 +1,10 @@
-import { getCharacter, getMultipleEpisodes } from "@/api";
+import { getAllCharacters, getCharacter, getMultipleEpisodes } from "@/api";
 import { EpisodeCard } from "@/components/EpisodeCard";
 import { extractIds } from "@/helpers/extractId";
 import { Episode } from "@/types/Episode";
 import Link from "next/link";
+
+export const dynamic = 'force-dynamic';
 
 const CharacterPage = async ({ params }: { params: { id: string } }) => {
   const character = await getCharacter(params.id);
@@ -52,5 +54,12 @@ const CharacterPage = async ({ params }: { params: { id: string } }) => {
     </div>
   );
 };
+
+export async function generateStaticParams() {
+  const response = await getAllCharacters();
+  return response.results.map((character) => ({
+    id: character.id.toString(),
+  }));
+}
 
 export default CharacterPage;
