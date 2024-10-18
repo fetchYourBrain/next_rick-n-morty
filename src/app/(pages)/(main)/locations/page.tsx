@@ -4,6 +4,8 @@ import { Pagination } from "@/components/Pagination";
 import { LocationList } from "@/components/LocationList";
 import { getAllLocations } from "@/api";
 
+export const dynamic = 'force-dynamic';
+
 
 export const metadata: Metadata = createMetaData({
   title: "Locations",
@@ -12,9 +14,11 @@ export const metadata: Metadata = createMetaData({
   url: "/locations",
 });
 
+
+
 const LocationsPage = async ({ searchParams }: { searchParams: { page?: string } }) => {
   const currentPage = Number(searchParams.page) || 1;
-  const locations = await getAllLocations();
+  const locations = await getAllLocations(currentPage);
   const info = locations.info;
     
   return (
@@ -37,14 +41,5 @@ const LocationsPage = async ({ searchParams }: { searchParams: { page?: string }
     </div>
   );
 };
-
-export async function generateStaticParams() {
-  const characters = await getAllLocations();
-  const totalPages = Math.ceil(characters.info.count);
-  
-  return Array.from({ length: totalPages }, (_, index) => ({
-    page: (index + 1).toString(),
-  }));
-}
   
 export default LocationsPage;

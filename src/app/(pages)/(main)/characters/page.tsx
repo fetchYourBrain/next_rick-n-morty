@@ -4,6 +4,8 @@ import { Metadata } from "next";
 import { createMetaData } from "@/helpers/metadata";
 import { getAllCharacters } from "@/api";
 
+export const dynamic = 'force-dynamic';
+
 export const metadata: Metadata = createMetaData({
   title: "Characters",
   description:
@@ -13,7 +15,7 @@ export const metadata: Metadata = createMetaData({
 
 const CharactersPage = async ({ searchParams }: { searchParams: { page?: string } }) => {
   const currentPage = Number(searchParams.page) || 1;
-  const characters = await getAllCharacters()
+  const characters = await getAllCharacters(currentPage)
   const info = characters.info;
 
   return (
@@ -23,13 +25,5 @@ const CharactersPage = async ({ searchParams }: { searchParams: { page?: string 
     </div>
   );
 };
-export async function generateStaticParams() {
-  const characters = await getAllCharacters();
-  const totalPages = Math.ceil(characters.info.count);
-  
-  return Array.from({ length: totalPages }, (_, index) => ({
-    page: (index + 1).toString(),
-  }));
-}
 
 export default CharactersPage;

@@ -12,10 +12,12 @@ export const metadata: Metadata = createMetaData({
   url: "/episodes",
 });
 
+export const dynamic = 'force-dynamic';
+
 
 const EpisodesPage = async ({ searchParams }: { searchParams: { page?: string } }) => {
   const currentPage = Number(searchParams.page) || 1;
-  const episodes = await getAllEpisodes() 
+  const episodes = await getAllEpisodes(currentPage) 
   const info = episodes.info;
 
   return (
@@ -39,14 +41,5 @@ const EpisodesPage = async ({ searchParams }: { searchParams: { page?: string } 
     </div>
   );
 };
-
-export async function generateStaticParams() {
-  const characters = await getAllEpisodes();
-  const totalPages = Math.ceil(characters.info.count);
-  
-  return Array.from({ length: totalPages }, (_, index) => ({
-    page: (index + 1).toString(),
-  }));
-}
 
 export default EpisodesPage;
