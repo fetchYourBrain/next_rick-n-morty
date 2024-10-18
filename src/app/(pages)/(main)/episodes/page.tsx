@@ -4,7 +4,6 @@ import { createMetaData } from "@/helpers/metadata";
 import { Metadata } from "next";
 import { getAllEpisodes } from "@/api";
 
-export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = createMetaData({
   title: "Episodes",

@@ -4,7 +4,6 @@ import { Pagination } from "@/components/Pagination";
 import { LocationList } from "@/components/LocationList";
 import { getAllLocations } from "@/api";
 
-export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = createMetaData({
   title: "Locations",
