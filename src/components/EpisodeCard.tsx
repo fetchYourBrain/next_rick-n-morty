@@ -1,5 +1,5 @@
 import { Episode } from "@/types/Episode";
-import { createSlug } from "@/utils/createSlug";
+import { createSlug } from "@/helpers/createSlug";
 import Link from "next/link";
 
 interface EpisodeCardProps {

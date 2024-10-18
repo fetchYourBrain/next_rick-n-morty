@@ -3,7 +3,6 @@ import { EpisodeCard } from "@/components/EpisodeCard";
 import { extractIds } from "@/helpers/extractId";
 import { Character } from "@/types/Character";
 import { Episode } from "@/types/Episode";
-import { extractIds } from "@/utils/idExtractor";
 import Link from "next/link";
 import Image from 'next/image';
 import { getAllCharacters } from "@/api";
