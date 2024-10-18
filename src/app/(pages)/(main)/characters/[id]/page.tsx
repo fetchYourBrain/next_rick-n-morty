@@ -1,10 +1,8 @@
-import { getAllCharacters, getCharacter, getMultipleEpisodes } from "@/api";
+import { getCharacter, getMultipleEpisodes } from "@/api";
 import { EpisodeCard } from "@/components/EpisodeCard";
 import { extractIds } from "@/helpers/extractId";
 import { Episode } from "@/types/Episode";
 import Link from "next/link";
-
-export const dynamic = 'force-dynamic';
 
 const CharacterPage = async ({ params }: { params: { id: string } }) => {
   const character = await getCharacter(params.id);
@@ -31,7 +29,8 @@ const CharacterPage = async ({ params }: { params: { id: string } }) => {
       "unknown"
     );
 
-  const episodeCount = Array.isArray(episodes) ? episodes.length : 1;
+  const episodeCount = episodes.length;
+
   return (
     <div>
       <h1>{name}</h1>
@@ -44,27 +43,14 @@ const CharacterPage = async ({ params }: { params: { id: string } }) => {
         Episodes: {episodeCount} {episodeCount === 1 ? "episode" : "episodes"}
       </h2>
       <ul className="flex flex-col gap-4">
-        {Array.isArray(episodes) ? (
-          episodes.map((episode: Episode) => (
-            <li key={episode.id}>
-              <EpisodeCard episodeInfo={episode} />
-            </li>
-          ))
-        ) : (
-          <li key={episodes}>
-            <EpisodeCard episodeInfo={episodes} />
+        {episodes.map((episode: Episode) => (
+          <li key={episode.id}>
+            <EpisodeCard episodeInfo={episode} />
           </li>
-        )}
+        ))}
       </ul>
     </div>
   );
 };
-
-export async function generateStaticParams() {
-  const response = await getAllCharacters();
-  return response.results.map((character) => ({
-    id: character.id.toString(),
-  }));
-}
 
 export default CharacterPage;
