@@ -9,7 +9,7 @@ import { useState } from "react";
 import { BurgerMenu } from "./BurgerMenu";
 import { NAVIGATION } from "@/types/Navigation";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { auth } from "@/app/firebase/config";
+import { auth } from "@/firebase/config";
 import { signOut } from "firebase/auth";
 import CustomizedSwitches from "./CustomizedSwitches";
 
