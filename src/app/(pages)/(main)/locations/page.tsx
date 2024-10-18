@@ -1,13 +1,8 @@
-
-import store from "@/app/lib/store";
-import { Location } from "@/types/Location";
-import { ApiResponse } from "@/types/ApiResponse";
-import { PayloadAction } from "@reduxjs/toolkit";
 import { Metadata } from "next";
 import { createMetaData } from "@/helpers/metadata";
 import { Pagination } from "@/components/Pagination";
 import { LocationList } from "@/components/LocationList";
-import { fetchAllLocations } from "@/app/lib/location/locationSlice";
+import { getAllLocations } from "@/api";
 
 export const dynamic = 'force-dynamic';
 
@@ -20,13 +15,8 @@ export const metadata: Metadata = createMetaData({
 
 const LocationsPage = async ({ searchParams }: { searchParams: { page?: string } }) => {
   const currentPage = Number(searchParams.page) || 1;
-  const response = await store.dispatch(fetchAllLocations({ 
-    query: `page=${currentPage}`, 
-    noCache: true 
-  })) as PayloadAction<ApiResponse<Location>>;
-
-  const locations: Location[] = response.payload.results;
-  const info = response.payload.info;
+  const locations = await getAllLocations();
+  const info = locations.info;
     
   return (
     <div>
@@ -42,7 +32,7 @@ const LocationsPage = async ({ searchParams }: { searchParams: { page?: string }
             <h4>Dimension</h4>
           </div>
         </div>
-        <LocationList locations={locations} />
+        <LocationList locations={locations.results} />
       </div>
       <Pagination info={info} currentPage={currentPage} basePath="/locations" />
     </div>
