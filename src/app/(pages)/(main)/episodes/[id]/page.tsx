@@ -3,6 +3,8 @@ import { CharacterCard } from "@/components/CharacterCard";
 import { extractIds } from "@/helpers/extractId";
 import { Character } from "@/types/Character";
 
+export const dynamic = 'error'
+
 const EpisodePage = async ({ params }: { params: { id: string } }) => {
   const episode = await getEpisode(params.id);
   const characterIds = extractIds(episode.characters);

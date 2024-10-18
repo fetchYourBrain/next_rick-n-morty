@@ -3,6 +3,8 @@ import { CharacterCard } from "@/components/CharacterCard";
 import { extractIds } from "@/helpers/extractId";
 import { Character } from "@/types/Character";
 
+export const dynamic = 'error'
+
 const LocationPage = async ({ params }: { params: { id: string } }) => {
   const location = await getLocation(params.id);
   const residentsIds = extractIds(location.residents);
