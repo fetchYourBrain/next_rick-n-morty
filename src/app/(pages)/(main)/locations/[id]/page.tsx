@@ -1,4 +1,4 @@
-import { getLocation, getMultipleCharacters } from "@/api";
+import { getAllLocations, getLocation, getMultipleCharacters } from "@/api";
 import { CharacterCard } from "@/components/CharacterCard";
 import { extractIds } from "@/helpers/extractId";
 import { Character } from "@/types/Character";
@@ -6,7 +6,6 @@ import { Character } from "@/types/Character";
 const LocationPage = async ({ params }: { params: { id: string } }) => {
   const location = await getLocation(params.id);
   const residentsIds = extractIds(location.residents);
-
 
   const residentsResponse = await getMultipleCharacters(residentsIds);
 
@@ -32,5 +31,13 @@ const LocationPage = async ({ params }: { params: { id: string } }) => {
     </div>
   );
 };
+
+export async function generateStaticParams() {
+  const response = await getAllLocations();
+  return response.results.map((location) => ({
+    id: location.id.toString(),
+  }));
+}
+
 
 export default LocationPage;

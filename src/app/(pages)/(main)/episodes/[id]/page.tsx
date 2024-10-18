@@ -1,4 +1,4 @@
-import { getEpisode, getMultipleCharacters } from "@/api";
+import { getAllEpisodes, getEpisode, getMultipleCharacters } from "@/api";
 import { CharacterCard } from "@/components/CharacterCard";
 import { extractIds } from "@/helpers/extractId";
 import { Character } from "@/types/Character";
@@ -6,11 +6,10 @@ import { Character } from "@/types/Character";
 const EpisodePage = async ({ params }: { params: { id: string } }) => {
   const episode = await getEpisode(params.id);
   const characterIds = extractIds(episode.characters);
-
   const characters: Character[] = await getMultipleCharacters(characterIds);
 
   const { name } = episode;
-  const characterCount = Array.isArray(characters) ? characters.length : 1;
+  const characterCount = characters.length;
 
   return (
     <div>
@@ -28,5 +27,12 @@ const EpisodePage = async ({ params }: { params: { id: string } }) => {
     </div>
   );
 };
+
+export async function generateStaticParams() {
+  const response = await getAllEpisodes();
+  return response.results.map((episode) => ({
+    id: episode.id.toString(),
+  }));
+}
 
 export default EpisodePage;
