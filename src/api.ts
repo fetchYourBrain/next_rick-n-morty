@@ -18,7 +18,7 @@ export function get<T>(url: string): Promise<T> {
 }
 
 export const getAllCharacters = (query = '') => 
-  get<ApiResponse<Character>>(`/character${query}`);
+  get<ApiResponse<Character>>(`/character${query}`);  
 
 export const getAllEpisodes = (query='') => 
   get<ApiResponse<Episode>>(`/episode${query}`);

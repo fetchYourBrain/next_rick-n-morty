@@ -10,7 +10,6 @@ export interface ApiResponse<T> {
   results: T[];
 }
 
-// Для одиночного запиту (getById)
 export interface SingleApiResponse<T> {
   results: T;
 }

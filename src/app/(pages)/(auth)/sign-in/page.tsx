@@ -1,14 +1,14 @@
-'use client';
+"use client";
 
 import { useState } from "react";
-import {useSignInWithEmailAndPassword} from 'react-firebase-hooks/auth';
-import {auth} from '@/app/firebase/config';
+import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
+import { auth } from "@/app/firebase/config";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 
 const SignIn = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const router = useRouter();
 
   const [signInWithEmailAndPassword] = useSignInWithEmailAndPassword(auth);
@@ -18,12 +18,12 @@ const SignIn = () => {
 
     try {
       const res = await signInWithEmailAndPassword(email, password);
-      console.log({res});
-      sessionStorage.setItem('user', 'true')
-      setEmail('');
-      setPassword('');
-      router.back()
-    } catch(error) {
+      console.log({ res });
+      sessionStorage.setItem("user", "true");
+      setEmail("");
+      setPassword("");
+      router.back();
+    } catch (error) {
       console.error(error);
     }
   };
@@ -74,15 +74,17 @@ const SignIn = () => {
             Sign In
           </button>
           <h3 className="text-center">
-            Don`t have an account?{' '}
+            Don`t have an account?{" "}
             <Link href="/sign-up">
-              <span className="text-light-primary dark:text-dark-title-text underline cursor-pointer">Sign up</span>
+              <span className="text-light-primary dark:text-dark-title-text underline cursor-pointer">
+                Sign up
+              </span>
             </Link>
           </h3>
         </form>
       </div>
     </div>
   );
-}
+};
 
 export default SignIn;
