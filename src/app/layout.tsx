@@ -7,8 +7,6 @@ import { Container } from "@/components/Container";
 import StoreProvider from "./storeProvider";
 import ColorProvider from "@/providers/themeProvider";
 import { createMetaData } from "@/helpers/metadata";
-import { Suspense } from "react";
-import Loading from "./loading";
 
 export const metadata: Metadata = createMetaData({
   title: "Home library",
@@ -31,11 +29,9 @@ export default function RootLayout({
         >
           <div className="wrapper">
             <ColorProvider>
-              <Suspense fallback={<Loading />}>
                 <Header />
                 <Container>{children}</Container>
                 <Footer />
-              </Suspense>
             </ColorProvider>
           </div>
         </body>
