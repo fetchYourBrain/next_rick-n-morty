@@ -1,5 +1,4 @@
 import { Character } from '@/types/Character';
-import { createSlug } from '@/utils/createSlug';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -11,8 +10,8 @@ interface CharacterCardProps {
 export const CharacterCard: React.FC<CharacterCardProps> = ({ character }) => {
   const {id, name, status, species, gender, location, image } = character;
 
-  const statusLower = status.toLowerCase();
-  const genderLower = gender.toLowerCase();
+  const statusLower = status?.toLowerCase();
+  const genderLower = gender?.toLowerCase();
   const isDeadStatus = statusLower === 'dead';
 
   const getStatusColor = () =>
@@ -23,7 +22,11 @@ export const CharacterCard: React.FC<CharacterCardProps> = ({ character }) => {
     genderLower === 'male' ? 'border-light-primary' : 
     genderLower === 'female' ? 'border-dark-btn' : 'border-light-primary';
 
-  const formattedSlug = createSlug(name);
+  const formatNameForURL = (name: string) => {
+    return name?.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+  }; 
+
+  const formattedSlug = formatNameForURL(name);
 
   return (
     <Link href={`/characters/${id}?${formattedSlug}`}>
@@ -47,7 +50,7 @@ export const CharacterCard: React.FC<CharacterCardProps> = ({ character }) => {
             </div>
             
             <div className={`absolute right-3 top-2 px-2 py-1 text-center font-bold text-white transition-opacity duration-300 ${getStatusColor()} ${isDeadStatus && 'group-hover:opacity-0'}`}>
-              {status.toUpperCase()}
+              {status?.toUpperCase()}
             </div>
 
             <div className="absolute bottom-3 right-0 transition-transform duration-300 group-hover:translate-x-full">
@@ -81,9 +84,9 @@ export const CharacterCard: React.FC<CharacterCardProps> = ({ character }) => {
               Last seen on: 
             </p>
             <p className="self-start">
-              {(!location.name || location.name === 'unknown') 
+              {(!location?.name || location?.name === 'unknown') 
                   ? "Somewhere in space" 
-                  : location.name}
+                  : location?.name}
             </p>
           </div>
         </div>

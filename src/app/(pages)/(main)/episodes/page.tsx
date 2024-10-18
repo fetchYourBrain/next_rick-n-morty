@@ -1,12 +1,8 @@
-import { fetchAllEpisodes } from "@/app/lib/episode/episodeSlice";
-import store from "@/app/lib/store";
-import { Episode } from "@/types/Episode";
-import { ApiResponse } from "@/types/ApiResponse";
-import { PayloadAction } from "@reduxjs/toolkit";
 import { EpisodeList } from "@/components/EpisodeList";
 import { Pagination } from "@/components/Pagination";
 import { createMetaData } from "@/helpers/metadata";
 import { Metadata } from "next";
+import { getAllEpisodes } from "@/api";
 
 export const dynamic = 'force-dynamic';
 
@@ -20,13 +16,8 @@ export const metadata: Metadata = createMetaData({
 
 const EpisodesPage = async ({ searchParams }: { searchParams: { page?: string } }) => {
   const currentPage = Number(searchParams.page) || 1;
-  const response = await store.dispatch(fetchAllEpisodes({ 
-    query: `page=${currentPage}`, 
-    noCache: true 
-  })) as PayloadAction<ApiResponse<Episode>>;
-
-  const episodes: Episode[] = response.payload.results;
-  const info = response.payload.info;
+  const episodes = await getAllEpisodes() 
+  const info = episodes.info;
 
   return (
     <div>
@@ -42,7 +33,7 @@ const EpisodesPage = async ({ searchParams }: { searchParams: { page?: string } 
             <h4>Episode</h4>
           </div>
         </div>
-        <EpisodeList episodes={episodes} />
+        <EpisodeList episodes={episodes.results} />
       </div>
 
       <Pagination info={info} currentPage={currentPage} basePath="/episodes" />

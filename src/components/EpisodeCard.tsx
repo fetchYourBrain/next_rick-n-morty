@@ -1,5 +1,5 @@
 import { Episode } from "@/types/Episode";
-import { createSlug } from "@/utils/createSlug";
+import { createSlug } from "@/helpers/createSlug";
 import Link from "next/link";
 
 interface EpisodeCardProps {
@@ -10,10 +10,9 @@ interface EpisodeCardProps {
 export const EpisodeCard: React.FC<EpisodeCardProps> = ({ episodeInfo }) => {
   const { id, name, air_date, episode } = episodeInfo;
 
-
   const formatEpisodeSlug = (episode: string) => {
-    const seasonStr = episode.substring(1, 3);
-    const episodeStr = episode.substring(4, 6);
+    const seasonStr = episode?.substring(1, 3);
+    const episodeStr = episode?.substring(4, 6);
 
     return `season-${seasonStr}-episode-${episodeStr}`;
   };

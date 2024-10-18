@@ -1,12 +1,9 @@
-import { fetchCharacterData } from "@/app/lib/character/characterSlice";
-import { fetchMultipleEpisodes } from "@/app/lib/episode/episodeSlice";
-import store from "@/app/lib/store";
+import { getCharacter, getMultipleEpisodes } from "@/api";
 import { EpisodeCard } from "@/components/EpisodeCard";
+import { extractIds } from "@/helpers/extractId";
 import { Character } from "@/types/Character";
 import { Episode } from "@/types/Episode";
-import { extractIds } from "@/utils/idExtractor";
 import Link from "next/link";
-import Image from 'next/image';
 import { getAllCharacters } from "@/api";
 
 export async function generateStaticParams() {
@@ -18,86 +15,55 @@ export async function generateStaticParams() {
 }
 
 const CharacterPage = async ({ params }: { params: { id: string } }) => {
-  const response = await store.dispatch(fetchCharacterData(params.id));
-  const character: Character = response.payload as Character; 
-
+  const character: Character = await getCharacter(params.id);
   const episodeIds = extractIds(character.episode);
-  const episodesResponse = await store.dispatch(fetchMultipleEpisodes(episodeIds as unknown as string[]));
+  const episodes: Episode[] = await getMultipleEpisodes(episodeIds);
 
-  const episodes: Episode[] = Array.isArray(episodesResponse.payload)
-    ? episodesResponse.payload
-    : [episodesResponse.payload]; 
+  const { name, status, species, gender, origin, location } = character;
 
-  const { image, name, status, species, gender, origin, location } = character;
+  const originLink =
+    origin.name !== "unknown" ? (
+      <Link href={`/locations/${origin.url.split("/").pop()}`}>
+        {origin.name}
+      </Link>
+    ) : (
+      "unknown"
+    );
 
-  const originLink = origin.name !== 'unknown' ? (
-    <Link href={`/locations/${origin.url.split('/').pop()}`}>{origin.name}</Link>
-  ) : (
-    'unknown'
-  );
+  const locationLink =
+    location.name !== "unknown" ? (
+      <Link href={`/locations/${location.url.split("/").pop()}`}>
+        {location.name}
+      </Link>
+    ) : (
+      "unknown"
+    );
 
-  const locationLink = location.name !== 'unknown' ? (
-    <Link href={`/locations/${location.url.split('/').pop()}`}>{location.name}</Link>
-  ) : (
-    'unknown'
-  );
-
+  const episodeCount = Array.isArray(episodes) ? episodes.length : 1;
   return (
     <div>
-      <div className=" bg-light-card-bg dark:bg-dark-card-bg mb-4 flex flex-col gap-2 p-4 border-b-2 border-light-divider dark:border-dark-divider font-bold ">
-        <h2 className="self-center text-light-primary dark:text-dark-primary text-3xl">{name}</h2>
-
-        <div className="flex flex-col sm:flex-row">
-          <div className="self-center">
-            <Image 
-              src={image}
-              alt={name} 
-              width={250} 
-              height={250}
-            />
-          </div>
-
-          <div className="flex flex-col gap-2 justify-between w-full pt-4 mt-4 sm:mt-0 sm:ml-4 border-t-2 sm:pt-0 sm:border-t-0 sm:pl-4 sm:border-l-2 border-light-primary dark:border-dark-primary">
-            <div className="flex flex-row justify-between">
-              <p className="font-normal">Status: </p> 
-              <p>{status}</p>
-            </div>
-
-            <div className="flex flex-row justify-between">
-              <p className="font-normal">Species: </p> 
-              <p>{species}</p>
-            </div>
-
-            <div className="flex flex-row justify-between">
-              <p className="font-normal">Gender: </p> 
-              <p>{gender}</p>
-            </div>
-
-            <div className="flex flex-row justify-between">
-              <p className="font-normal">Origin: </p> 
-              <p>{originLink}</p>
-            </div>
-
-
-            <div className="flex flex-row justify-between">
-              <p className="font-normal">Location: </p> 
-              <p>{locationLink}</p>
-            </div>
-
-            <p className="font-medium text-center sm:text-right">Was in {episodes.length} {episodes.length === 1 ? 'episode' : 'episodes'}</p>
-          </div>
-        </div>
-      </div>
-
-      <div className="relative z-0 mt-4">
-        <ul className="flex flex-col gap-4">
-          {episodes.map((episode: Episode) => ( 
+      <h1>{name}</h1>
+      <p>Status: {status}</p>
+      <p>Species: {species}</p>
+      <p>Gender: {gender}</p>
+      <p>Origin: {originLink}</p>
+      <p>Location: {locationLink}</p>
+      <h2 className="text-xl font-bold mb-8">
+        Episodes: {episodeCount} {episodeCount === 1 ? "episode" : "episodes"}
+      </h2>
+      <ul className="flex flex-col gap-4">
+        {Array.isArray(episodes) ? (
+          episodes.map((episode: Episode) => (
             <li key={episode.id}>
               <EpisodeCard episodeInfo={episode} />
-            </li> 
-          ))}
-        </ul>
-      </div>
+            </li>
+          ))
+        ) : (
+          <li key={episodes}>
+            <EpisodeCard episodeInfo={episodes} />
+          </li>
+        )}
+      </ul>
     </div>
   );
 };

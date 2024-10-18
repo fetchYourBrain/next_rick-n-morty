@@ -1,4 +1,5 @@
-import  Image from "next/image";
+import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -9,14 +10,30 @@ export default function Home() {
         </h1>
         <p className="text-sm md:text-lg mb-6">
           Wubba Lubba Dub Dub! This ain’t your regular ol’ wiki, Morty! It’s{" "}
-          <span className="text-light-primary dark:text-dark-primary font-bold">THE </span> wiki, the one
-          with all the juicy deets from across the infinite dimensions! I mean,
-          come on Morty, we’re talkin’ infinite timelines here, so buckle up!
-          You want knowledge? This thing’s got more information than your puny
-          little brain can handle, Morty. You ready for that kinda
-          responsibility? Eh, who cares, you’re gettin’ it anyway. Just don’t
-          turn into a Cronenberg while you’re readin' it, alright?!
+          <span className="text-light-primary dark:text-dark-primary font-bold">
+            THE{" "}
+          </span>{" "}
+          wiki, the one with all the juicy deets from across the infinite
+          dimensions! I mean, come on Morty, we’re talkin’ infinite timelines
+          here, so buckle up! You want knowledge? This thing’s got more
+          information than your puny little brain can handle, Morty. You ready
+          for that kinda responsibility? Eh, who cares, you’re gettin’ it
+          anyway. Just don’t turn into a Cronenberg while you’re readin' it,
+          alright?!
         </p>
+          <Link
+            target="_blank"
+            className="cursor-custom-pointer text-l  px-4 py-2 
+          bg-light-primary text-light-text 
+          dark:bg-dark-btn dark:text-dark-text
+          rounded 
+          transition-all 
+          hover:bg-light-bg hover:text-light-primary 
+          dark:hover:bg-dark-bg dark:hover:text-dark-primary"
+            href="https://github.com/fetchYourBrain/next_rick-n-morty/blob/main/README.md"
+          >
+            Portal to Githubverse!
+          </Link>
       </section>
       <section className="flex lg:w-[50%] justify-center bg-[url('/next_rick-n-morty/images/portal.png')] bg-center bg-contain bg-no-repeat">
         <Image
