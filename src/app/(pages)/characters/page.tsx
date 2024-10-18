@@ -12,7 +12,7 @@ export const metadata: Metadata = createMetaData({
   url: "/characters",
 });
 
-const CharactersPage = async () => {
+const Page = async () => {
   const currentPage = 1;
   const characters = await getAllCharacters(currentPage)
   // const info = characters.info;
@@ -25,4 +25,4 @@ const CharactersPage = async () => {
   );
 };
 
-export default CharactersPage;
+export default Page;

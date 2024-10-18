@@ -4,7 +4,7 @@ import { extractIds } from "@/helpers/extractId";
 import { Episode } from "@/types/Episode";
 import Link from "next/link";
 
-const CharacterPage = async ({ params }: { params: { id: string } }) => {
+const CharacterDetails = async ({ params }: { params: { id: string } }) => {
   const character = await getCharacter(params.id);
   const episodeIds = extractIds(character.episode);
   const episodes: Episode[] = await getMultipleEpisodes(episodeIds);
@@ -60,4 +60,4 @@ export async function generateStaticParams() {
   }));
 }
 
-export default CharacterPage;
+export default CharacterDetails;
