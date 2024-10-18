@@ -12,11 +12,10 @@ export const metadata: Metadata = createMetaData({
   url: "/episodes",
 });
 
-export const dynamic = 'force-dynamic';
 
 
-const EpisodesPage = async ({ searchParams }: { searchParams: { page?: string } }) => {
-  const currentPage = Number(searchParams.page) || 1;
+const EpisodesPage = async () => {
+  const currentPage = 1;
   const episodes = await getAllEpisodes(currentPage) 
   const info = episodes.info;
 

@@ -4,7 +4,6 @@ import { Metadata } from "next";
 import { createMetaData } from "@/helpers/metadata";
 import { getAllCharacters } from "@/api";
 
-export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = createMetaData({
   title: "Characters",
@@ -13,8 +12,8 @@ export const metadata: Metadata = createMetaData({
   url: "/characters",
 });
 
-const CharactersPage = async ({ searchParams }: { searchParams: { page?: string } }) => {
-  const currentPage = Number(searchParams.page) || 1;
+const CharactersPage = async () => {
+  const currentPage = 1;
   const characters = await getAllCharacters(currentPage)
   const info = characters.info;
 
