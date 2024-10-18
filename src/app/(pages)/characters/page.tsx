@@ -1,5 +1,5 @@
 import { CharacterList } from "@/components/CharacterList";
-import { Pagination } from "@/components/Pagination";
+// import { Pagination } from "@/components/Pagination";
 import { Metadata } from "next";
 import { createMetaData } from "@/helpers/metadata";
 import { getAllCharacters } from "@/api";
@@ -15,12 +15,12 @@ export const metadata: Metadata = createMetaData({
 const CharactersPage = async () => {
   const currentPage = 1;
   const characters = await getAllCharacters(currentPage)
-  const info = characters.info;
+  // const info = characters.info;
 
   return (
     <div>
       <CharacterList characters={characters.results} />
-      <Pagination info={info} currentPage={currentPage} basePath="/characters" />
+      {/* <Pagination info={info} currentPage={currentPage} basePath="/characters" /> */}
     </div>
   );
 };
