@@ -4,7 +4,7 @@ import { extractIds } from "@/helpers/extractId";
 import { Episode } from "@/types/Episode";
 import Link from "next/link";
 
-export const dynamic = 'force-dynamic';
+export const dynamic = 'error'
 
 const CharacterPage = async ({ params }: { params: { id: string } }) => {
   const character = await getCharacter(params.id);
