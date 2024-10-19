@@ -3,6 +3,9 @@ import { CharacterCard } from "@/components/CharacterCard";
 import { extractIds } from "@/helpers/extractId";
 import { Character } from "@/types/Character";
 
+export const revalidate = 60;
+export const dynamic = 'force-static';
+
 const EpisodePage = async ({ params }: { params: { id: string } }) => {
   const episodeInfo = await getEpisode(params.id);
   const characterIds = extractIds(episodeInfo.characters);

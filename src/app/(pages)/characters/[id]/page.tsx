@@ -5,10 +5,20 @@ import { Episode } from "@/types/Episode";
 import Image from 'next/image';
 import Link from "next/link";
 
+export const revalidate = 60;
+export const dynamic = 'force-static';
+
 const CharacterDetails = async ({ params }: { params: { id: string } }) => {
   const character = await getCharacter(params.id);
+
+
+
   const episodeIds = extractIds(character.episode);
-  const episodes: Episode[] = await getMultipleEpisodes(episodeIds);
+  const episodesResponse: Episode[] = await getMultipleEpisodes(episodeIds);
+
+  const episodes: Episode[] = Array.isArray(episodesResponse)
+  ? episodesResponse
+  : [episodesResponse];
 
   const { name, image, status, species, gender, origin, location } = character;
 
