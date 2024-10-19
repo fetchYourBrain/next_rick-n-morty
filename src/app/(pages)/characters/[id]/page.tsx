@@ -7,14 +7,19 @@ import Link from "next/link";
 export const revalidate = 60;
 export const dynamic = 'force-static';
 
-
 const CharacterDetails = async ({ params }: { params: { id: string } }) => {
   const character = await getCharacter(params.id);
+
+
+
   const episodeIds = extractIds(character.episode);
-  const episodes: Episode[] = await getMultipleEpisodes(episodeIds);
+  const episodesResponse: Episode[] = await getMultipleEpisodes(episodeIds);
 
-  const { name, status, species, gender,  origin, location } = character; 
+  const episodes: Episode[] = Array.isArray(episodesResponse)
+  ? episodesResponse
+  : [episodesResponse];
 
+  const { name, status, species, gender, origin, location } = character;
 
   const originLink =
     origin.name !== "unknown" ? (
@@ -44,16 +49,20 @@ const CharacterDetails = async ({ params }: { params: { id: string } }) => {
       <p>Gender: {gender}</p>
       <p>Origin: {originLink}</p>
       <p>Location: {locationLink}</p>
-      <h2 className="text-xl font-bold mb-8">
-        Episodes: {episodeCount} {episodeCount === 1 ? "episode" : "episodes"}
-      </h2>
-      <ul className="flex flex-col gap-4">
-        {episodes.map((episode: Episode) => (
-          <li key={episode.id}>
-            <EpisodeCard episodeInfo={episode} />
-          </li>
-        ))}
-      </ul>
+      {episodeCount > 0 && (
+        <>
+          <h2 className="text-xl font-bold mb-8">
+            Episodes: {episodeCount} {episodeCount === 1 ? "episode" : "episodes"}
+          </h2>
+          <ul className="flex flex-col gap-4">
+            {episodes.map((episode: Episode) => (
+              <li key={episode.id}>
+                <EpisodeCard episodeInfo={episode} />
+              </li>
+            ))}
+          </ul>
+        </>
+      )}
     </div>
   );
 };
