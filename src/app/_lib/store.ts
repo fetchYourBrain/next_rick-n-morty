@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import filterSlice from "./filter/filterSlice";
+import favoriteSlice from "./favorites/favoriteSlice";
 
 const store = configureStore({
   reducer: {
     filter: filterSlice,
+    favorites: favoriteSlice,
   },
 });
 

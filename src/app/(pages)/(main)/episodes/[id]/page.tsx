@@ -1,10 +1,11 @@
 import { getAllEpisodes, getEpisode, getMultipleCharacters } from "@/api";
 import { CharacterCard } from "@/components/CharacterCard";
+import MakeFavorite from "@/components/MakeFavorite";
 import { extractIds } from "@/helpers/extractId";
 import { Character } from "@/types/Character";
 
 export const revalidate = 60;
-export const dynamic = 'force-static';
+export const dynamic = "force-static";
 
 const EpisodePage = async ({ params }: { params: { id: string } }) => {
   const episodeInfo = await getEpisode(params.id);
@@ -16,14 +17,20 @@ const EpisodePage = async ({ params }: { params: { id: string } }) => {
 
   return (
     <div className="relative">
-      <div className="sticky top-[82px] z-[1] bg-light-card-bg dark:bg-dark-card-bg mb-10 flex flex-col gap-3 p-4 border-b-2 border-light-divider dark:border-dark-divider  font-bold ">
-        <h2 className="text-light-primary dark:text-dark-primary text-3xl">{name}</h2>
-        
+      <div className="sticky top-[82px] z-[1] bg-light-card-bg dark:bg-dark-card-bg mb-10 flex flex-col items-cente text-center gap-2 p-4 border-b-2 border-light-divider dark:border-dark-divider  font-bold ">
+        <div className="flex flex-col items-center">
+          <h2 className="text-light-primary dark:text-dark-primary text-3xl text-center mb-2">
+            {name}
+          </h2>
+          <MakeFavorite item={episodeInfo} type="episodes" />
+        </div>
         <p>{air_date}</p>
         <div className="flex flex-col md:flex-row md:justify-between gap-2">
           <p>{episode}</p>
 
-          <p className="font-normal">{characterCount} {characterCount === 1 ? "character" : "characters"}</p>
+          <p className="font-normal">
+            {characterCount} {characterCount === 1 ? "character" : "characters"}
+          </p>
         </div>
       </div>
 

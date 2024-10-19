@@ -3,4 +3,5 @@ export const NAVIGATION = [
   { name: "Characters", href: "/characters" },
   { name: "Episodes", href: "/episodes" },
   { name: "Locations", href: "/locations" },
+  {name: "Favorites", href: '/favorites'}
 ];
