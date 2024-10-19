@@ -1,5 +1,5 @@
 import { getAllCharacters, getCharacter, getMultipleEpisodes } from "@/api";
-// import { EpisodeCard } from "@/components/EpisodeCard";
+import { EpisodeCard } from "@/components/EpisodeCard";
 import { extractIds } from "@/helpers/extractId";
 import { Episode } from "@/types/Episode";
 import Link from "next/link";
@@ -47,13 +47,13 @@ const CharacterDetails = async ({ params }: { params: { id: string } }) => {
       <h2 className="text-xl font-bold mb-8">
         Episodes: {episodeCount} {episodeCount === 1 ? "episode" : "episodes"}
       </h2>
-      {/* <ul className="flex flex-col gap-4">
+      <ul className="flex flex-col gap-4">
         {episodes ? (episodes.map((episode: Episode) => (
           <li key={episode.id}>
             <EpisodeCard episodeInfo={episode} />
           </li>
         ))) : (<>There is no episodes</>)}
-      </ul> */}
+      </ul>
     </div>
   );
 };

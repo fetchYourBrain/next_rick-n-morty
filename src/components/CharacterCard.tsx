@@ -1,4 +1,3 @@
-// import { createSlug } from '@/helpers/createSlug';
 import { Character } from '@/types/Character';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -23,7 +22,6 @@ export const CharacterCard: React.FC<CharacterCardProps> = ({ character }) => {
     genderLower === 'male' ? 'border-light-primary' : 
     genderLower === 'female' ? 'border-dark-btn' : 'border-light-primary';
 
-  // const formattedSlug = createSlug(name);
 
   return (
     <Link href={`/characters/${id}`}>
