@@ -12,7 +12,8 @@ export const metadata: Metadata = createMetaData({
   url: "/episodes",
 });
 
-
+export const revalidate = 60;
+export const dynamic = 'force-static';
 
 const EpisodesPage = async () => {
   const currentPage = 1;

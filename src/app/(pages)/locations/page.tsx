@@ -11,6 +11,9 @@ export const metadata: Metadata = createMetaData({
   url: "/locations",
 });
 
+export const revalidate = 60;
+export const dynamic = 'force-static';
+
 const LocationsPage = async () => {
   const currentPage = 1;
   const locations = await getAllLocations(currentPage);
