@@ -1,5 +1,6 @@
 import { getAllLocations, getLocation, getMultipleCharacters } from "@/api";
 import { CharacterCard } from "@/components/CharacterCard";
+import MakeFavorite from "@/components/MakeFavorite";
 import { extractIds } from "@/helpers/extractId";
 import { Character } from "@/types/Character";
 
@@ -22,14 +23,19 @@ const LocationPage = async ({ params }: { params: { id: string } }) => {
 
   return (
     <div className="relative">
-    <div className="sticky top-[82px] z-[1] bg-light-card-bg dark:bg-dark-card-bg mb-10 flex flex-col gap-3 p-4 border-b-2 border-light-divider dark:border-dark-divider  font-bold ">
-      <h2 className="text-light-primary dark:text-dark-primary text-3xl">{name}</h2>
+   <div className="sticky top-[82px] z-[1] bg-light-card-bg dark:bg-dark-card-bg mb-10 flex flex-col items-cente text-center gap-2 p-4 border-b-2 border-light-divider dark:border-dark-divider  font-bold ">
+        <div className="flex flex-col items-center">
+          <h2 className="text-light-primary dark:text-dark-primary text-3xl text-center mb-2">
+            {name}
+          </h2>
+          <MakeFavorite item={location} type="locations" />
+        </div>
       
       <p>{type}</p>
 
       <div className="flex flex-col gap-3 md:flex-row md:justify-between">
         <p>{dimension === 'unknown' ? 'Unknown Dimension' : dimension}</p>
-        <p className="text-xl font-bold mb-8">
+        <p className="text-xl font-bold">
           Residents: {residentsCount < 2 ? "1" : `${residentsCount} `} resident{residentsCount !== 1 && 's'}
         </p>
       </div>
