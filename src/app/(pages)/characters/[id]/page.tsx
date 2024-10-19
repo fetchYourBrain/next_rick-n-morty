@@ -48,11 +48,11 @@ const CharacterDetails = async ({ params }: { params: { id: string } }) => {
         Episodes: {episodeCount} {episodeCount === 1 ? "episode" : "episodes"}
       </h2>
       <ul className="flex flex-col gap-4">
-        {episodes ? (episodes.map((episode: Episode) => (
+        {episodes.map((episode: Episode) => (
           <li key={episode.id}>
             <EpisodeCard episodeInfo={episode} />
           </li>
-        ))) : (<>There is no episodes</>)}
+        ))}
       </ul>
     </div>
   );
