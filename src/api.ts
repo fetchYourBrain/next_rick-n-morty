@@ -17,8 +17,8 @@ export function get<T>(url: string): Promise<T> {
   return fetch(fullURL, { cache: 'no-store' }).then((res) => res.json());
 }
 
-export const getAllCharacters = (page: number = 1) => 
-  get<ApiResponse<Character>>(`/character?page=${page}`);  
+export const getAllCharacters = (query = ' ') => 
+  get<ApiResponse<Character>>(`/character${`?name=${query}`}`);  
 
 export const getAllEpisodes = (page: number = 1) => 
   get<ApiResponse<Episode>>(`/episode?page=${page}`);
