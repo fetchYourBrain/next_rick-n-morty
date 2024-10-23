@@ -29,6 +29,13 @@ export const PaginationComponent: React.FC<PaginationProps> = ({ info, basePath 
         onChange={handlePageChange}
         variant="outlined"
         shape="rounded"
+        className="text-light-primary dark:text-dark-primary"
+        sx={{
+          '& .MuiPaginationItem-outlined': {
+            color: 'currentColor',
+            borderColor: 'currentColor', 
+          },
+        }}
       />
     </div>
   );
