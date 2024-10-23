@@ -1,46 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="9f739c06-36d6-4e04-acf4-19a7c64372e4" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/public/cursors/pointer.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/(pages)/(main)/layout.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/ThemeToggle.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/TopBar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(pages)/characters/[id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(pages)/(main)/characters/[id]/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(pages)/characters/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(pages)/(main)/characters/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(pages)/episodes/[id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(pages)/(main)/episodes/[id]/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(pages)/episodes/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(pages)/(main)/episodes/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(pages)/locations/[id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(pages)/(main)/locations/[id]/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(pages)/locations/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(pages)/(main)/locations/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(pages)/sign-in/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(pages)/(auth)/sign-in/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(pages)/sign-up/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(pages)/(auth)/sign-up/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/BurgerMenu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/BurgerMenu.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/CharacterCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CharacterCard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/CharacterList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CharacterList.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/Container.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Container.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/CustomizedSwitches.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CustomizedSwitches.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/EpisodeCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/EpisodeCard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/EpisodeList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/EpisodeList.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/Footer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Footer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/LocationCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/LocationCard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/LocationList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/LocationList.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/PageJumper.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/Pagination.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Pagination.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/SearchOptions.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SortOptions.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/ThemeToggle.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ThemeToggle.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/TopBar.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/globals.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/lib/hooks.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/lib/hooks.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/loading.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/loading.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/not-found.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/not-found.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(pages)/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/providers/themeProvider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/providers/themeProvider.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hooks/useBreadcrumbs.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/useBreadcrumbs.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tailwind.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tailwind.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/CharacterSearch.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CharacterSearch.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,9 +17,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 6
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
   <component name="ProjectId" id="2nYVVnpW4M1jHPXw1r0JovERb8l" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -62,12 +29,14 @@
   "keyToString": {
     "Node.js.createSlug.ts.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "feature/description-page",
+    "git-widget-placeholder": "main",
     "last_opened_file_path": "/Users/vadimurbanovich/projects/mate/team_project/next_rick-n-morty",
     "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "settings.editor.selected.configurable": "inlay.hints",
     "ts.external.directory.path": "/Users/vadimurbanovich/projects/mate/team_project/next_rick-n-morty/node_modules/typescript/lib",
     "vue.rearranger.settings.migration": "true"
   }
@@ -89,6 +58,9 @@
       <updated>1729149350999</updated>
       <workItem from="1729149352572" duration="621000" />
       <workItem from="1729150023653" duration="193000" />
+      <workItem from="1729681353175" duration="3836000" />
+      <workItem from="1729691776608" duration="117000" />
+      <workItem from="1729691908439" duration="609000" />
     </task>
     <servers />
   </component>
