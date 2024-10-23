@@ -17,7 +17,7 @@ const EpisodePage = async ({ params }: { params: { id: string } }) => {
 
   return (
     <div className="relative">
-      <div className="sticky top-[82px] z-[1] bg-light-card-bg dark:bg-dark-card-bg mb-10 flex flex-col items-cente text-center gap-2 p-4 border-b-2 border-light-divider dark:border-dark-divider  font-bold ">
+      <div className="sticky top-[82px] z-[1] bg-light-card-bg dark:bg-dark-card-bg mb-10 flex flex-col items-center text-center gap-2 p-4 border-b-2 border-light-divider dark:border-dark-divider  font-bold ">
         <div className="flex flex-col items-center">
           <h2 className="text-light-primary dark:text-dark-primary text-3xl text-center mb-2">
             {name}

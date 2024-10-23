@@ -18,7 +18,7 @@ export function get<T>(url: string): Promise<T> {
 }
 
 export const getAllCharacters = (query = ' ') => 
-  get<ApiResponse<Character>>(`/character${`?name=${query}`}`);  
+  get<ApiResponse<Character>>(`/character${`${query}`}`);
 
 export const getAllEpisodes = (page: number = 1) => 
   get<ApiResponse<Episode>>(`/episode?page=${page}`);

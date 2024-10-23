@@ -1,5 +1,4 @@
-// import { CharacterList } from "@/components/CharacterList";
-import { Pagination } from "@/components/Pagination";
+import { PaginationComponent } from "@/components/Pagination";
 import { Metadata } from "next";
 import { createMetaData } from "@/helpers/metadata";
 import { getAllCharacters } from "@/api";
@@ -15,17 +14,16 @@ export const metadata: Metadata = createMetaData({
 export const revalidate = 60;
 export const dynamic = 'force-static';
 
-const CharactersPage = async () => {
-  const currentPage = 1;
-  const characters = await getAllCharacters();
+const CharactersPage = async ({ searchParams }: { searchParams: { page?: string } }) => {
+  const currentPage = searchParams.page ? parseInt(searchParams.page) : 1;
+  const characters = await getAllCharacters(`?page=${currentPage}`);
 
   return (
     <div>
-      <CharacterSearch/>
-      <Pagination info={characters.info} currentPage={currentPage} basePath="/characters" />
+      <CharacterSearch />
+      <PaginationComponent info={characters.info} basePath="/characters" />
     </div>
   );
 };
 
 export default CharactersPage;
-
