@@ -5,7 +5,7 @@ Next Rick-n-Morty is an interactive web application inspired by the popular anim
 <br />
 <div align="center">
 <a href="№">
-![Product screenshot](https://drive.google.com/uc?id=1BUY-_GdSDIMANNDmAScg1CEJaoaAi_gy)
+![Product screenshot][(https://drive.google.com/uc?id=1BUY-_GdSDIMANNDmAScg1CEJaoaAi_gy)]
 
 </a>
 
