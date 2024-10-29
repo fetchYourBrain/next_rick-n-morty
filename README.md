@@ -2,6 +2,13 @@
 # Rick-n-Morty
 
 Next Rick-n-Morty is an interactive web application inspired by the popular animated series "Rick and Morty." This project showcases the use of modern technologies, such as Next.js, to create a dynamic and fast interface that allows users to explore the "Rick and Morty" universe.
+<br />
+<div align="center">
+<a href="№">
+<img src="(https://drive.google.com/file/d/1BUY-_GdSDIMANNDmAScg1CEJaoaAi_gy/view?usp=sharing)" alt="Logo" width="580" height="380">
+</a>
+
+<h3 align="center">React Product Catalog</h3>
 
 
 ## API Reference
