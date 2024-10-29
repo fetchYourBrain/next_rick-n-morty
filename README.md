@@ -5,11 +5,9 @@ Next Rick-n-Morty is an interactive web application inspired by the popular anim
 <br />
 <div align="center">
 <a href="№">
-<img src="https://drive.google.com/file/d/1BUY-_GdSDIMANNDmAScg1CEJaoaAi_gy/view?usp=sharing" alt="herp-screen" width="580" height="380">
+![Product screenshot](https://drive.google.com/uc?id=1BUY-_GdSDIMANNDmAScg1CEJaoaAi_gy)
+
 </a>
-
-<h3 align="center">React Product Catalog</h3>
-
 
 ## API Reference
 
