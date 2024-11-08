@@ -5,12 +5,6 @@ import { Location } from "./types/Location";
 
 const BASE_URL = 'https://rickandmortyapi.com/api'
 
-// function wait(delay: number): Promise<void> {
-//   return new Promise((resolve) => {
-//     setTimeout(resolve, delay);
-//   });
-// }
-
 export function get<T>(url: string): Promise<T> {
   const fullURL = BASE_URL + url;
 
