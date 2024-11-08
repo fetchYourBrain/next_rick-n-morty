@@ -7,7 +7,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { BurgerMenu } from "./BurgerMenu";
-import { NAVIGATION } from "@/types/Navigation";
+import { NAVIGATION } from "@/constants/Navigation";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "@/firebase/config";
 import { signOut } from "firebase/auth";

@@ -1,22 +1,15 @@
 'use client';
 
 import { useState, useEffect, ChangeEvent } from 'react';
-import { Tooltip } from "@mui/material";
 import { usePathname, useRouter } from 'next/navigation';
-import FilterButtons from './FilterButtons';
-import { searchCharacters, searchEpisodes, searchLocations } from '@/helpers/query';
+import { searchCharacters, searchEpisodes, searchLocations } from '@/services/query';
 import { SearchResult } from '@/types/SearchResults';
 
 const TopBar = () => {
   const router = useRouter();
   const pathname = usePathname();
-  const [showFilters, setShowFilters] = useState(false);
   const [searchValue, setSearchValue] = useState<string>(''); 
   const [searchResults, setSearchResults] = useState<SearchResult[]>([]);
-
-  const toggleFilters = () => {
-    setShowFilters((prev) => !prev);
-  };
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value;
@@ -53,7 +46,6 @@ const TopBar = () => {
   };
 
   useEffect(() => {
-    setShowFilters(false);
     setSearchValue('');
     setSearchResults([]);
   }, [pathname]);
@@ -69,20 +61,6 @@ const TopBar = () => {
           className="rounded-sm bg-transparent py-2 px-4 text-light-primary dark:text-dark-primary border-[#00A7E4] dark:border-dark-primary border-[2px] flex-1"
         />
       </div>
-      <Tooltip title="Filter out the nonsense, Morty! We only want the good stuff!">
-        <button
-          className="self-start uppercase py-2 px-4 text-light-primary dark:text-dark-primary border-[#00A7E4] dark:border-dark-primary border-[2px] rounded-sm"
-          onClick={toggleFilters}
-        >
-          Filter
-        </button>
-      </Tooltip>
-
-      {showFilters && (
-        <div className="absolute z-[2] right-0 top-full mt-2 bg-[#ffffff] dark:bg-[#262626] p-2 border-[#00A7E4] dark:border-dark-primary border-[2px] rounded-sm">
-          <FilterButtons />
-        </div>
-      )}
 
       {searchResults.length > 0 && (
         <div className="absolute z-[2] left-0 top-full mt-2 bg-[#ffffff] dark:bg-[#262626] p-2 border-[#00A7E4] dark:border-dark-primary border-[2px] rounded-sm w-full">
